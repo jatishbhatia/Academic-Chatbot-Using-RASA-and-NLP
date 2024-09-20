@@ -1,0 +1,1048 @@
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 1/23Recomme nder system
+A recommender system , or a recommendation system  (som etimes replacing "system" with
+terms such as "platform", "engine", or "algorithm"), is a subclass of information filteri ng system
+that provides suggestions for items that are most pertinent to a particular user.[1][2] Reco mmender
+systems are particularly useful when an individual needs to choose an item from a potentially
+overwhelming number of items that a service may offer.[1][3]
+Typically, the suggestions refer to various decision-making processes, such as what product to
+purchase, what music to listen to, or what online news to read.[1] Recommender systems are used
+in a varie ty of areas, with commonly recognised examples taking the form  of playlist  generators for
+video and music services, product recommenders for online stores, or content recommenders for
+social media platforms and open web content recommenders.[4][5] These systems can operate
+using a single type of input, like music, or multiple inputs within and across platforms like news,
+books and search queries. There are also popular recommender systems for specific topics like
+restaurants and online dating. Recomm ender systems have also been developed to explore
+research articles and experts,[6] collaborators,[7] and financial services.[8]
+Recommender systems usually make use of either or both collaborative filter ing and cont ent-based
+filtering (also known as the perso nality-based approach), as well as other systems such as
+knowledge-based systems . Collaborative filtering approaches  build a model from a user's past
+behavior (items previously purchase d or selected and/or numerical ratings given to those items) as
+well as similar decisions made by other users. This model is then used to predict items (or ratings
+for items) that the user may have an interest in.[9] Content-based filtering approaches utilize a
+series of discrete, pre-tagged characteristics of an item in order to recommend additional items
+with similar properties.[10]
+We can demonstrate the differences between collaborative and content-based filtering by
+comparing two early music recommender systems – Last.fm  and Pandora Radio .
+Last.fm creates a "station" of recommended songs by observing what bands and individual
+tracks the user has listened to on a regular basis and comparing those against the listening
+behavior of other users. Last.fm will play tracks that do not appear in the user's library , but are
+often played by other users with similar interests. As this approach leverages the behavior of
+users, it is an example of a collaborative filtering technique.[11]
+Pandora uses the properties of a song or artist (a subset of the 400 attributes provided by the
+Music Genome Project ) to seed a "station" that plays music with similar properties. User
+feedback is used to refine the station's results, deemphasizing certain attributes when a user
+"dislikes" a particular song and emphasizing other attributes when a user "likes" a song. This is
+an example of a content-based approach.
+Each type of syste m has its strength s and weaknesses. In the above example, Last.fm requires a
+large amo unt of information about a user to make accurate recommend ations. This is an example
+of the cold start  problem, and is common in collaborative filtering systems.[12][13][14][15][16][17]
+Whereas Pandora needs very little information to start, it is far more limited in scope (for example,
+it can only make recommendations that are similar to the original seed).Overview
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 2/23
+An example of collaborative filtering
+based on a rating systemRecommender systems are a useful alternative to search algorithms  since they help users discover
+items they might not have found otherwise. Of note, recommender systems are often implemented
+using search engines indexing non-traditional data.
+Recommender systems have been the focus of several granted patents.[18][19][20][21][22]
+Elaine Rich created the first recommender system in 1979, called Grundy.[23][24] She looked for a
+way to recommen d users books they might like. Her idea was to create  a system that asks users
+specific questions and classifies them into classes of preferences, or "stereotypes", depending on
+their answ ers. Depending on users' stereotype membership, they would then get recommendations
+for books they might like.
+Another early recommender system, called a "digital bookshelf", was described in a 1990 technical
+report by Jussi Karlgren  at Columbia University,[25] and implemented at scale and worked through
+in technical reports and publications from 1994 onwards by Jussi Karlgren, then at SICS ,[26][27]
+and research groups led by Pattie Maes  at MIT,[28] Will Hill at Bellcore,[29] and Paul Resnick , also
+at MIT[30][3] whose work with GroupLens was awarded the 2010 ACM Software Systems Award .
+Montaner provide d the first overview of recommender systems from an intelligent agent
+perspective.[31] Adomavicius  provided  a new, alternate overview of recommender systems.[32]
+Herlocker provide s an additional overview of evaluation techniques for recommender systems,[33]
+and Beel  et al. discussed the problems of offline evaluations.[34] Beel et al. have also provided
+literature surveys on available research paper recommender systems and existing
+challenges.[35][36]
+One approach to the design of recommender systems that has
+wide use is collaborative filtering .[37] Collaborative filtering is
+based on the assumption that peop le who agreed in the past
+will agree in the future, and that they will like similar kinds of
+items as they liked in the past. The system generates
+recommendations using only inform ation about rating profiles
+for different users or items. By locati ng peer users/items with a
+rating history similar to the current user or item, they generate
+recommendations using this neighborhood. Collaborative
+filtering methods are classified as memory-based and model-
+based. A well-known example of memory-based approaches is
+the user-based algorithm,[38] while that of model-based
+approaches is matrix factorization (recommender systems) .[39]
+A key advantage of the collaborative filtering approach is that it does not rely on machine
+analyzable content and therefore it is capable of accurately recommending complex items such as
+movies without requiring an "understanding" of the item itself. Many algorithms have been used inHistory
+Approaches
+Collaborative filtering
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 3/23measuring user similarity or item similarity in recommender systems. For example, the k-nearest
+neighbor  (k-NN) approach[40] and the Pearson Correlation  as first implemented by Allen.[41]
+When building a model from a user 's behavior, a distinction is often made between explicit and
+implicit  forms of data collection .
+Examples of explicit data collection include the following:
+Asking a user to rate an item on a sliding scale.
+Asking a user to search.
+Asking a user to rank a collection of items from favorite to least favorite.
+Presenting two items to a user and asking him/her to choose the better one of them.
+Asking a user to create a list of items that he/she likes (see Rocchio classification  or other
+similar techniques).
+Examples of implicit data collection  include the following:
+Observing the items that a user views in an online store.
+Analyzing item/user viewing times.[42]
+Keeping a record of the items that a user purchases online.
+Obtaining a list of items that a user has listened to or watched on his/her computer .
+Analyzing the user's social network and discovering similar likes and dislikes.
+Collaborative filtering approaches often suffer from three problems: cold start , scalabil ity, and
+sparsity.[43]
+Cold start : For a new user or item, there is not enough data to make accurate
+recommendations. Note: one commonly implemented solution to this problem is the multi-
+armed bandit algorithm .[44][12][13][15][17]
+Scalability : There are millions of users and products in many of the environments in which
+these systems make recommendations. Thus, a large amount of computation power is often
+necessary to calculate recommendations.
+Sparsity : The number of items sold on major e-commerce sites is extremely large. The most
+active users will only have rated a small subset of the overall database. Thus, even the most
+popular items have very few ratings.
+One of the most famous examples of collaborative filtering is item-to-item collaborative filtering
+(people who buy x also buy y), an algorithm popularized by Amazon.com 's recommender
+system.[45]
+Many social networks  originally used collaborative filteri ng to recommend new friends, grou ps,
+and other social connections by examining the network of connections between a user and their
+friends.[1] Collaborative filtering is still used as part of hybrid systems.
+Another common approach when designing recommender systems is content-based filtering .
+Content-based filtering methods are based on a description of the item and a profile of the user's
+preferences.[46][47] These methods are best suited to situations where there is known data  on an
+item (nam e, locati on, description, etc.), but not on the user. Content-based recommenders treat
+recommendation as a user-specific classification problem and learn a classifier for the user's likes
+and dislikes based on an item's features.Content-based filtering
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 4/23In this system, keywords are used to describe the items, and a user profile  is built to indicate the
+type of item this user likes. In other words, these algorithms try to recommend items similar to
+those that a user liked in the past or is examining in the present. It does not rely on a user sign-in
+mechanism to generate this often temporary profile. In particular, various candidate items are
+compared with items previously rated by the user, and the best-matching items are recommended.
+This approach has its roots in information retrieval  and information filtering  research.
+To create a user profile , the system mostly focuses on two types of information:
+1. A model of the user's preference.
+2. A history of the user's interaction with the recommender system.
+Basically, these methods use an item profile (i.e., a set of discrete attributes and features)
+characterizing the item within the system. To abstract the features of the items in the system, an
+item presentation algorithm is appli ed. A widely used algorithm is the tf–idf  repr esentation (also
+called vector space  representation).[48] The system create s a content-based profile of users based
+on a weighted vector of item features. The weights denote the importance of each feature to the
+user and can be computed from individually rated content vectors usin g a variety of techniques.
+Simple approaches use the average values of the rated item vector while other sophisticated
+methods use machine learning techniques such as Bayesian Classifiers , cluster analysis , decision
+trees , and artificial neural networks  in order to estimate the probability that the user is going to
+like the item.[49]
+A key issue with content-based filtering is whether the system can learn user preferences from
+users' actions regarding one content source and use them across other content types. When the
+system is limited to recommending content of the same type as the user is already using, the value
+from the recomme ndation system is significantly less than when other content types from other
+services can be recommended. For example, recommending news articles based on news browsing
+is useful. Still, it would be much more useful when music, videos, products, discussions, etc., from
+different services, can be recommen ded based on news browsing. To overcome this, most content-
+based recommender systems now use some form of the hybrid system.
+Content-based recommender systems can also include opinion-based recommender systems. In
+some cases, users are allowed to leave text reviews or feedback on the items. These user-generated
+texts are implicit data for the recommender system because they are potentially rich resources of
+both feature/aspects of the item and users' evaluation/sentiment to the item. Features extracted
+from the user-generated reviews are improved meta-data  of items, because  as they also reflect
+aspects of the item like meta-data , extracted features are widely concerned by the users.
+Sentiments extracted from the reviews can be seen as users' rating scores on the corresponding
+features. Popular approaches of opinion-based recommender system utilize various techniques
+including text mini ng, information retrieval , sentiment analysis  (see also Multimodal sentiment
+analysis ) and deep learning.[50]
+Most recommend er systems now use a hybrid approach, combining collaborative filtering ,
+content-based filtering, and other approaches. There is no reason why several different techniques
+of the same type could not be hybridized. Hybrid approaches can be implemented in several ways:
+by makin g content-based and collaborative-based predictions separately and then combining
+them; by adding content-based capabilities to a collaborative-based approach (and vice versa); orHybrid recommendations approaches
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 5/23by unifying the approaches into one model (see[32] for a complete review of recomm ender
+systems). Several studies that empir ically compared the performance of the hybrid with the pure
+collaborative and content-based methods and demonstrated that the hybrid methods can provide
+more accurate recommendations than pure approaches. These methods can also be used to
+overcome some of the common problems in recommender systems such as cold start and the
+sparsity problem , as well as the knowledge engineering bottleneck in knowledge-based
+approaches.[51]
+Netflix  is a good examp le of the use of hybrid recommender systems.[52] The website makes
+recommendations by comparing the watching and searching habit s of similar users (i.e.,
+collaborative filtering) as well as by offering movies that share characteri stics with films that a user
+has rated highly (content-based filtering).
+Some hybridization techniques include:
+Weighted : Combining the score of dif ferent recommendation components numerically .
+Switching : Choosing among recommendation components and applying the selected one.
+Mixed : Recommendations from dif ferent recommenders are presented together to give the
+recommendation.
+Feature Combination : Features derived from dif ferent knowledge sources are combined
+together and given to a single recommendation algorithm.[53]
+Feature Augmentation : Computing a feature or set of features, which is then part of the input
+to the next technique.[53]
+Cascade : Recommenders are given strict priority , with the lower priority ones breaking ties in
+the scoring of the higher ones.
+Meta-level : One recommendation technique is applied and produces some sort of model,
+which is then the input used by the next technique.[54]
+These recommend er systems use the interactions of a user within a session[55] to generate
+recommendations. Session-based recommender systems are used at Youtube[56] and Amazon.[57]
+These are particularly useful when history (such as past clicks, purchases) of a user is not available
+or not relevant in the current user session. Domains, where session-ba sed recommendations are
+particularly releva nt, include video, e-commerce, travel, music and more. Most instances of
+session-based recommender systems rely on the sequence of recent interactions within a session
+without requiring  any additional details (historical, demographic) of the user. Techniques for
+session-based recommendations are mainly based on generative sequential models such as
+Recurrent Neural Networks,[55][58] Transformers,[59] and other deep learning based
+approaches[60][61]
+The recommendat ion problem can be seen as a special instance of a reinforcement learning
+problem whereby the user is the environment upon which the agent, the recommendation system
+acts upon in order to receive a reward, for instance, a click or engagement by the user.[56][62][63]
+One aspe ct of reinforcement learning that is of particular use in the area of recommender systemsTechnologies
+Session-based recommender systems
+Reinforcement learning for recommender systems
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 6/23is the fact that the models or policies can be learned by providing a rewa rd to the recommendation
+agent. This is in contrast to traditional learning techniques which rely on supervised learning
+approaches that are less flexible, reinforcement learning recommendation techniques allow to
+potentially train models that can be optimized directly on metrics of engagement, and user
+interest.[64]
+Multi-criteria recommender systems (MCRS) can be defined as recommender systems that
+incorporate preference information upon multiple criteria. Instead of developing recommendation
+techniques based on a single criterio n value, the overall preference of user u for the item i, these
+systems try to predict a rating for unexplored items of u by exploiting preference information on
+multiple criteria that affect this overall preference value. Several researc hers approach MCRS as a
+multi-criteria decision making (MC DM) problem, and apply MCDM methods and techniques to
+implement MCRS systems.[65] See this chapter[66] for an extended introduction.
+The majority of existing approaches to recommender systems focus on recommending the most
+relevant content to users using contextual information, yet do not take into account the risk of
+disturbing the user with unwanted notifications. It is important to cons ider the risk of upsetting
+the user by pushing recommendations in certain circumstances, for instance, during a professional
+meeting, early morning, or late at night. Therefore, the performance of the recommender system
+depends in part on the degree to which it has incorporated the risk into the recommendation
+process. One option to manage this issue is DRARS , a system  which models the context-aware
+recommendation as a bandit problem . This system combines a content-based technique and a
+contextual bandit algorithm.[67]
+Mobile recommen der systems make use of internet-accessing smart phones  to offer personalized,
+context-sensitive recommendations. This is a particularly difficult area of research as mobile data
+is more complex than data that recommender systems often have to deal with. It is heterogeneous,
+noisy, requires spatial and temporal auto-correlation, and has validation and generality
+problems.[68]
+There are three factors that could affect the mobile recommender systems and the accuracy of
+prediction results:  the context, the recommendation method and privacy.[69] Add itionally, mobile
+recommender systems suffer from a transplantation problem – recommendations may not apply in
+all regions (for instance, it would be unwise to recommend a recipe in an area where all of the
+ingredients may not be available).
+One exam ple of a mobile recommen der system are the approaches taken by companies such as
+Uber  and Lyft to generate drivin g routes for taxi drivers in a city.[68] This system uses GPS data of
+the route s that taxi drivers take while working, which includes location (latitude and longitude),
+time stamps, and operational status (with or without passengers). It uses this data to recommend a
+list of pickup points along a route, with the goal of optimizing occupancy times and profits.Multi-criteria recommender systems
+Risk-aware recommender systems
+Mobile recommender systems
+The Netflix Prize
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 7/23One of the events that energized research in recommender systems was the Netflix Prize . From
+2006 to 2009, Netflix sponsored a competition, offering a grand prize of $1,000,000 to the team
+that could  take an offered dataset of over 100 million movie ratings and return recommendations
+that were  10% more accurate than those offered by the company's existing recommender system.
+This com petition energized the search for new and more accurate algorithms. On 21 September
+2009, the grand prize of US$1,000 ,000 was given to the BellKor's Pragmatic Chaos team using
+tiebreaking rules.[70]
+The mos t accurate algorithm in 2007 used an ensemble method of 107 different algorithmic
+approaches, blended into a single prediction. As stated by the winners, Bell et al.:[71]
+Predictive accurac y is substantially improved when blending multiple predictors. Our
+experience is that most efforts should be concentrated in deriving substantially
+different approaches, rather than refining a single technique.  Consequ ently, our
+solution is an ensemble of many methods.
+Many benefits accrued to the web due to the Netflix project. Some teams have taken their
+technology and applied it to other markets. Some members from the team that finished second
+place founded Gravity R&D , a recommendation engine that's active in the RecSys
+community .[70][72] 4-Tell, Inc. created a Netflix project–derived solution for ecommerce websites.
+A numbe r of privacy issues arose around the dataset offered by Netflix for the Netflix Prize
+competition. Altho ugh the data sets were anonymized in order to preserve customer privacy, in
+2007 two researchers from the University of Texas were able to identify individual users by
+matching the data sets with film ratings on the Internet Movie Database.[73] As a result, in
+December 2009, an anonymous Netf lix user sued Netflix in Doe v. Netflix, alleging that Netflix had
+violated United States fair trade laws and the Video Privacy Protection Act by releasing the
+datasets.[74] This , as well as concerns from the Federal Trade Commission , led to the cancellation
+of a second Netflix Prize competition in 2010.[75]
+Evaluation is important in assessing the effectiveness of recommendation algorithms. To measure
+the effectiveness  of recom mender systems, and compare different approaches, three types of
+evaluations  are available: user studies, online evaluations (A/B tests) , and offline evaluations.[34]
+The comm only used metrics are the mean squared error  and root mea n squared error , the latte r
+having been used in the Netflix Prize. The information retrieval metrics such as precision and
+recall  or DCG  are useful to assess the quality of a recommendation method. Diversity, novelty, and
+coverage are also considered as important aspects in evaluation.[76] How ever, many of the classic
+evaluation measures are highly criticized.[77]
+Evaluating the performance of a recommendation algorithm on a fixed test dataset will always be
+extremely challenging as it is impossible to accurately predict the reactions of real users to the
+recommendations. Hence any metric that computes the effectiveness of an algorithm in offline
+data will be imprecise.Evaluation
+Performance measures
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 8/23User studies are rather a small scale. A few dozens or hundreds  of users are presented
+recommendations created by different recommendation approaches, and then the users judge
+which recommendations are best.
+In A/B tests, recommendations are shown to typically thousands of users of a real product, and the
+recommender system randomly picks at least two different recommendation approaches to
+generate recommendations. The effectiveness is measured with implicit measures of effectiveness
+such as conversion rate  or click-through rate .
+Offline evaluations are based on historic data, e.g. a dataset that contai ns information about how
+users previously rated movies.[78]
+The effectiveness of recommendation approaches is then measured based on how well a
+recommendation approach can predict the users' ratings in the dataset. While a rating is an explicit
+expression of whether a user liked a movie, such information is not available in all domains. For
+instance, in the domain of citation recommender systems, users typically do not rate a citation or
+recommended article. In such cases,  offline evaluations may use implicit measures of effectiveness.
+For instance, it may be assumed that a recommender system is effective that is able to recommend
+as many articles as possible that are contained in a research article's reference list. However, this
+kind of offline evaluations is seen critical by many researchers.[79][80][81][34] For insta nce, it has
+been show n that results of offline evaluations have low correlation with results from user studies or
+A/B tests.[81][82] A dataset popular  for offline evaluat ion has been shown to contain duplicate data
+and thus to lead to wrong conclusions in the evaluation of algorithms.[83] Often, results of so-called
+offline evaluations  do not correlate with actually assessed user-satisfaction.[84] This is probably
+because offline training is highly biased toward the highly reachable item s, and offline testing data
+is highly influenced by the outputs of the online recommendation module.[79][85] Rese archers have
+concluded that the results of offline evaluations should be viewed critically.[86]
+Typically, research on recommender systems is concerned with finding the most accurate
+recommendation algorithms. However, there are a number of factors that are also important.
+Diversity  – Users tend to be more satisfied with recommendations when there is a higher
+intra-list diversity , e.g. items from dif ferent artists.[87][88]
+Recommender persistence  – In some situations, it is more ef fective to re-show
+recommendations,[89] or let users re-rate items,[90] than showing new items. There are several
+reasons for this. Users may ignore items when they are shown for the first time, for instance,
+because they had no time to inspect the recommendations carefully .
+Privacy  – Recommender systems usually have to deal with privacy concerns[91] because
+users have to reveal sensitive information. Building user profiles  using collaborative filtering
+can be problematic from a privacy point of view . Many European countries have a strong
+culture of data privacy , and every attempt to introduce any level of user profiling  can result in a
+negative customer response. Much research has been conducted on ongoing privacy issues in
+this space. The Netflix Prize  is particularly notable for the detailed personal information
+released in its dataset. Ramakrishnan et al. have conducted an extensive overview of the
+trade-of fs between personalization and privacy and found that the combination of weak ties (an
+unexpected connection that provides serendipitous recommendations) and other data sources
+can be used to uncover identities of users in an anonymized dataset.[92]Beyond accuracy
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 9/23User demographics  – Beel et al. found that user demographics may influence how satisfied
+users are with recommendations.[93] In their paper they show that elderly users tend to be
+more interested in recommendations than younger users.
+Robustness  – When users can participate in the recommender system, the issue of fraud
+must be addressed.[94]
+Serendipity  – Serendipity  is a measure of "how surprising the recommendations are".[95][88]
+For instance, a recommender system that recommends milk to a customer in a grocery store
+might be perfectly accurate, but it is not a good recommendation because it is an obvious item
+for the customer to buy . "[Serendipity] serves two purposes: First, the chance that users lose
+interest because the choice set is too uniform decreases. Second, these items are needed for
+algorithms to learn and improve themselves".[96]
+Trust – A recommender system is of little value for a user if the user does not trust the
+system.[97] Trust can be built by a recommender system by explaining how it generates
+recommendations, and why it recommends an item.
+Labelling  – User satisfaction with recommendations may be influenced by the labeling of the
+recommendations.[98] For instance, in the cited study click-through rate  (CTR) for
+recommendations labeled as "Sponsored" were lower (CTR=5.93%) than CTR for identical
+recommendations labeled as "Organic" (CTR=8.86%). Recommendations with no label
+performed best (CTR=9.87%) in that study .
+Recommender systems are notoriously difficult to evaluate offline, with some researchers claiming
+that this has led to a reproducibility crisis in recommender systems publicati ons. The topic of
+reproducibility seems to be a recurr ent issue in some Machine Learning publication venues, but
+does not have a considerable effect beyond the world of scientific publication. In the context of
+recommender systems a 2019 paper surveyed a small number of hand-picked publications
+applying deep learning or neural methods to the top-k recommendation problem, published in top
+conferences (SIGIR, KDD, WWW, RecSys , IJCAI), has shown that on average less than 40% of
+articles could be reproduced by the authors of the survey, with as little as 14% in some conferences.
+The articles considers a number of potential problems in today's research  scholarship and suggests
+improved scientific practices in that area.[99][100][101] More recent work on benchmarking a set of
+the same methods came to qualitatively very different results[102] whereby neural methods were
+found to be among the best performing methods. Deep learning and neural methods for
+recommender systems have been used in the winning solutions in several recent recommender
+system challenges , WSDM,[103] RecSys Challenge .[104] Moreover neural and deep learning
+methods are widely used in indust ry where they are extensively teste d.[105][56][57] The topic of
+reproducibility is not new in recom mender systems. By 2011, Ekstrand , Konstan , et al. criticized
+that "it is currently  difficult to reproduce and extend recommender syste ms research results," and
+that evaluations are "not handled consistently".[106] Konstan and Adomavicius conclude  that "the
+Recommender Systems research community is facing a crisis where a significant number of papers
+present results that contribute little to collective knowledge [...] often because the research lacks
+the [...] evaluation to be properly judged and, hence, to provide meaning ful contributions."[107] As
+a consequence, much research about recommender systems can be considered as not
+reproducible.[108] Hence, operators  of recommender systems find little guidance in the current
+research for answering the question, which recommendation approaches to use in a recommender
+systems. Said  and Bellogín  conducted a study of papers published in the field, as well as
+benchmarked some of the most popular frameworks for recommendation and found large
+inconsistencies in results, even when the same algorithms and data sets were used.[109] Som e
+researchers demonstrated that minor variations in the recommendation algorithms or scenariosReproducibility
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 10/23led to strong changes in the effectiveness of a recommender system. They conclude that seven
+actions are necessary to improve the current situation:[108] "(1) survey other research fields and
+learn from them, (2) find a common understanding of reproducibility, (3) identify and understand
+the deter minants that affect reproducibility, (4) conduct more comprehensive experiments (5)
+modernize publication practices, (6) foster the development and use of recommendation
+frameworks, and (7) establish best-practice guidelines for recommender-systems research."
+Artificial intellige nce (AI) applicatio ns in recommendation systems are the advanced
+methodologies that leverage AI technologies, to enhance the performance recommendation
+engines. The AI-ba sed recommende r can analyze complex data sets, learning from user behavior,
+preferences, and interactions to generate highly accurate and personalized content or product
+suggestions.[110] The integration of AI in recommendation systems has marked a significant
+evolution from traditional recommendation methods. Traditional methods often relied on
+inflexible algorithms that could suggest items based on general user trends or apparent similarities
+in content. In comparison, AI-powered systems have the capability to detect patterns and subtle
+distinctions that may be overlooke d by traditional methods.[111] These systems can adapt to
+specific individual preferences, thereby offering recommendations that are more aligned with
+individual user needs. This approach marks a shift towards more personalized, user-centric
+suggestions.
+Recommendation systems widely adopt AI techniques such as machine learning , deep learning ,
+and natural language processing .[112] These advanced methods enhance  system capabilities to
+predict user preferences and deliv er personalized content more accurately. Each technique
+contributes uniqu ely. The following sections will introduce specific AI models utilized by a
+recommendation system by illustrating their theories and functionalities.
+Collaborative filter ing (CF) is one of the most commonly used recommendation system algorithms.
+It generates personalized suggestion s for users based on explicit or impl icit behavioral patterns to
+form predictions.[113] Specifically, it relies on external feedback such as star ratings, purchasing
+history and so on to make judgme nts. CF make predictions about users' preference based on
+similarity measurements. Essentially, the underlying theory is: "if user A is similar to user B, and if
+A likes item C, then it is likely that B also likes item C."
+There are many models available for collaborative filtering. For AI-applie d collaborative filtering, a
+common model is called K-nearest neighbors . The ideas are as follows:
+1. Data Representation : Create a n-dimensional space where each axis represents a user's trait
+(ratings, purchases, etc.). Represent the user as a point in that space.
+2. Statistical Distance : 'Distance' measures how far apart users are in this space. See statistical
+distance  for computational details
+3. Identifying Neighbors : Based on the computed distances, find k nearest neighbors of the
+user to which we want to make recommendationsArtificial intelligence applications in recommendation
+KNN-based collaborative filters
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 11/234. Forming Predictive Recommendations : The system will analyze the similar preference of the
+k neighbors. The system will make recommendations based on that similarity
+An artificial neural network  (ANN), is a deep learning model structure which aims to mimic a
+human brain. They comprise a series of neurons, each responsible for receiving and processing
+information transm itted from other interconnected neurons.[114] Similar to a human brain, these
+neurons will chang e activation state based on incoming signals (training input and backpropagated
+output), allowing the system to adju st activation weights during the netw ork learning phase. ANN
+is usually designed to be a black-box  model. Unlike regular machine learning where the underlying
+theoretical compo nents are formal and rigid, the collaborative effects of neurons are not entirely
+clear, but modern experiments has shown the predictive power of ANN.
+ANN is widely used in recommendation systems for its power to utilize various data. Other than
+feedback data, ANN can incorporat e non-feedback data which are too intricate for collaborative
+filtering to learn, and the unique structure allows ANN to identify extra signal from non-feedback
+data to boost user experience.[112] Following are some examples:
+Time and Seasonality : what specify time and date or a season that a user interacts with the
+platform
+User Navigation Patterns : sequence of pages visited, time spent on dif ferent parts of a
+website, mouse movement, etc
+External Social T rends : information from outer social media
+Natural language processing is a series of AI algorithms to make natural human language
+accessible and analyzable to a machi ne.[115] It is a fairly mode rn technique inspired by the growing
+amount of textual information. For application in recommendation system, a common case is the
+Amazon customer review. Amazon will analyze the feedbacks comments from each customer and
+report relevant data to other customers for reference. The recent years have witnessed the
+development of various text analysis models, including latent semantic analysis  (LSA), singular
+value decompositi on (SVD), latent Dirichlet allocation  (LDA), etc. Their  uses have consis tently
+aimed to provide customers with more precise and tailored recommendations.
+Algorithmic radicalization
+ACM Conference on Recommender
+Systems
+Cold start
+Collaborative filtering
+Collective intelligence
+Configurator
+Content discovery platformEnterprise bookmarking
+Filter bubble
+Pattern recognition
+Personalized marketing
+Personalized search
+Preference elicitation
+Product finder
+Rating site
+1. Ricci, Francesco; Rokach, Lior; Shapira, Bracha (2022). "Recommender Systems: Techniques,Neural networks
+Natural language processing
+See also
+References
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 12/23Applications, and Challenges"  (https://link.springer .com/chapter/10.1007/978-1-0716-2197-4_
+1). In Ricci, Francesco; Rokach, Lior; Shapira, Bracha (eds.). Recommender Systems
+Handbook  (3 ed.). New York: Springer . pp. 1–35. doi:10.1007/978-1-0716-2197-4_1  (https://do
+i.org/10.1007%2F978-1-0716-2197-4_1) . ISBN  978-1-0716-2196-7 .
+2. Lev Grossman (May 27, 2010). "How Computers Know What W e Want — Before W e Do"  (http
+s://web.archive.org/web/20100530064045/http://www .time.com/time/magazine/article/0,9171,1
+992403,00.html) . TIME . Archived from the original  (http://www .time.com/time/magazine/article/
+0,9171,1992403,00.html)  on May 30, 2010 . Retrieved June 1,  2015 .
+3. Resnick, Paul, and Hal R. V arian. "Recommender systems." Communications of the ACM 40,
+no. 3 (1997): 56–58.
+4. Gupta, Pankaj; Goel, Ashish; Lin, Jimmy; Sharma, Aneesh; W ang, Dong; Zadeh, Reza (2013).
+"WTF: the who to follow service at Twitter". Proceedings of the 22nd International Conference
+on World W ide W eb. Association for Computing Machinery . pp. 505–514.
+doi:10.1145/2488388.2488433  (https://doi.org/10.1 145%2F2488388.2488433) .
+ISBN  9781450320351 .
+5. Baran, Remigiusz; Dziech, Andrzej; Zeja, Andrzej (June 1, 2018). "A capable multimedia
+content discovery platform based on visual content analysis and intelligent data enrichment"  (ht
+tps://doi.org/10.1007%2Fs1 1042-017-5014-1) . Multimedia T ools and Applications . 77 (11):
+14077–14091. doi:10.1007/s1 1042-017-5014-1  (https://doi.org/10.1007%2Fs1 1042-017-5014-
+1). ISSN  1573-7721  (https://www .worldcat.org/issn/1573-7721) . S2CID  3651 1631  (https://api.s
+emanticscholar .org/CorpusID:3651 1631) .
+6. H. Chen, A. G. Ororbia II, C. L. Giles ExpertSeer: a Keyphrase Based Expert Recommender
+for Digital Libraries  (https://arxiv .org/abs/151 1.02058) , in arXiv preprint 2015
+7. Chen, Hung-Hsuan; Gou, Liang; Zhang, Xiaolong; Giles, Clyde Lee (201 1). "CollabSeer: a
+search engine for collaboration discovery"  (https://clgiles.ist.psu.edu/pubs/JCDL201 1-CollabSe
+er.pdf) (PDF) . Proceedings of the 1 1th Annual International ACM/IEEE Joint Conference on
+Digital Libraries . Association for Computing Machinery . pp. 231–240.
+doi:10.1145/1998076.1998121  (https://doi.org/10.1 145%2F1998076.1998121) .
+ISBN  9781450307444 .
+8. Felfernig, Alexander; Isak, Klaus; Szabo, Kalman; Zachar , Peter (2007). "The VIT A Financial
+Services Sales Support Environment"  (https://cdn.aaai.org/AAAI/2007/AAAI07-274.pdf)  (PDF) .
+In William Cheetham (ed.). Proceedings of the 19th National Conference on Innovative
+Applications of Artificial Intelligence, vol. 2 . pp. 1692–1699. ISBN  9781577353232 . ACM Copy
+(https://dl.acm.org/doi/10.5555/16201 13.16201 17).
+9. Melville, Prem; Sindhwani, V ikas (2010). "Recommender Systems"  (http://www .prem-melville.c
+om/publications/recommender-systems-eml2010.pdf)  (PDF) . In Claude Sammut; Geof frey I.
+Webb (eds.). Encyclopedia of Machine Learning . Springer . pp. 829–838. doi:10.1007/978-0-
+387-30164-8_705  (https://doi.org/10.1007%2F978-0-387-30164-8_705) . ISBN  978-0-387-
+30164-8 .
+10. R. J. Mooney & L. Roy (1999). Content-based book recommendation using learning for text
+categorization . In W orkshop Recom. Sys.: Algo. and Evaluation.
+11. Haupt, Jon (June 1, 2009). "Last.fm: People-Powered Online Radio". Music Reference
+Services Quarterly . 12 (1–2): 23–24. doi:10.1080/10588160902816702  (https://doi.org/10.108
+0%2F10588160902816702) . ISSN  1058-8167  (https://www .worldcat.org/issn/1058-8167) .
+S2CID  161141937  (https://api.semanticscholar .org/CorpusID:161 141937) .
+12. Chen, Hung-Hsuan; Chen, Pu (January 9, 2019). "Dif ferentiating Regularization W eights -- A
+Simple Mechanism to Alleviate Cold Start in Recommender Systems". ACM T ransactions on
+Knowledge Discovery from Data . 13: 1–22. doi:10.1145/3285954  (https://doi.org/10.1 145%2F3
+285954) . S2CID  59337456  (https://api.semanticscholar .org/CorpusID:59337456) .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 13/2313. Rubens, Neil; Elahi, Mehdi; Sugiyama, Masashi; Kaplan, Dain (2016). "Active Learning in
+Recommender Systems"  (https://rd.springer .com/book/10.1007/978-1-4899-7637-6) . In Ricci,
+Francesco; Rokach, Lior; Shapira, Bracha (eds.). Recommender Systems Handbook  (2 ed.).
+Springer US. pp. 809–846. doi:10.1007/978-1-4899-7637-6_24  (https://doi.org/10.1007%2F97
+8-1-4899-7637-6_24) . ISBN  978-1-4899-7637-6 .
+14. Bobadilla, J.; Ortega, F .; Hernando, A.; Alcalá, J. (201 1). "Improving collaborative filtering
+recommender system results and performance using genetic algorithms". Knowledge-Based
+Systems . 24 (8): 1310–1316. doi:10.1016/j.knosys.201 1.06.005  (https://doi.org/10.1016%2Fj.k
+nosys.201 1.06.005) .
+15. Elahi, Mehdi; Ricci, Francesco; Rubens, Neil (2016). "A survey of active learning in
+collaborative filtering recommender systems"  (https://www .researchgate.net/publication/303781
+992). Computer Science Review . 20: 29–50. doi:10.1016/j.cosrev .2016.05.002  (https://doi.org/
+10.1016%2Fj.cosrev .2016.05.002) .
+16. Andrew I. Schein; Alexandrin Popescul; Lyle H. Ungar ; David M. Pennock (2002). Methods and
+Metrics for Cold-Start Recommendations  (https://archive.org/details/sigir2002proceed0000inte/
+page/253) . Proceedings of the 25th Annual International ACM  SIGIR  Conference on Research
+and Development in Information Retrieval (SIGIR 2002). : ACM . pp. 253–260  (https://archive.or
+g/details/sigir2002proceed0000inte/page/253) . ISBN  1-581 13-561-0 . Retrieved February 2,
+2008 .
+17. Bi, Xuan; Qu, Annie; W ang, Junhui; Shen, Xiaotong (2017). "A group-specific recommender
+system"  (https://amstat.tandfonline.com/doi/abs/10.1080/01621459.2016.1219261) . Journal of
+the American Statistical Association . 112 (519): 1344–1353.
+doi:10.1080/01621459.2016.1219261  (https://doi.org/10.1080%2F01621459.2016.1219261) .
+S2CID  125187672  (https://api.semanticscholar .org/CorpusID:125187672) .
+18. Stack, Charles. " System and method for providing recommendation of goods and services
+based on recorded purchasing history  (https://patentimages.storage.googleapis.com/pdfs/US6
+782370.pdf) ." U.S. Patent 7,222,085, issued May 22, 2007.
+19. Herz, Frederick SM. "Customized electronic newspapers and advertisements." U.S. Patent
+7,483,871, issued January 27, 2009.
+20. Herz, Frederick, L yle Ungar , Jian Zhang, and David W achob. " System and method for
+providing access to data using customer profiles  (https://patentimages.storage.googleapis.co
+m/3c/1b/54/5c6688e454a63a/US8056100.pdf) ." U.S. Patent 8,056,100, issued November 8,
+2011.
+21. Harbick, Andrew V ., Ryan J. Snodgrass, and Joel R. Spiegel. " Playlist-based detection of
+similar digital works and work creators  (https://patents.google.com/patent/US8468046B2/en) ."
+U.S. Patent 8,468,046, issued June 18, 2013.
+22. Linden, Gregory D., Brent Russell Smith, and Nida K. Zada. " Automated detection and
+exposure of behavior-based relationships between browsable items  (https://patentimages.stora
+ge.googleapis.com/3c/f6/13/d5f70fcdcf1b6d/US9070156.pdf) ." U.S. Patent 9,070,156, issued
+June 30, 2015.
+23. BEEL, Joeran, et al. Paper recommender systems: a literature survey . International Journal on
+Digital Libraries, 2016, 17. Jg., Nr . 4, S. 305–338.
+24. RICH, Elaine. User modeling via stereotypes. Cognitive science, 1979, 3. Jg., Nr . 4, S. 329–
+354.
+25. Karlgren, Jussi. 1990. "An Algebra for Recommendations." Syslab W orking Paper 179 (1990).
+26. Karlgren, Jussi. " Newsgroup Clustering Based On User Behavior-A  Recommendation Algebra
+(http://soda.swedish-ict.se/2225/2/T94_04.pdf)  Archived  (https://web.archive.org/web/2021022
+7090805/http://soda.swedish-ict.se/2225/2/T94_04.pdf)  February 27, 2021, at the Wayback
+Machine ." SICS Research Report (1994).
+27. Karlgren, Jussi (October 2017). "A digital bookshelf: original work on recommender systems"  (h
+ttps://jussikarlgren.wordpress.com/2017/10/01/a-digital-bookshelf-original-work-on-recommend
+er-systems/) . Retrieved October 27,  2017 .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 14/2328. Shardanand, Upendra, and Pattie Maes. " Social information filtering: algorithms for automating
+"word of mouth"  (http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.30.6583&rep=rep1
+&type=pdf) ." In Proceedings of the SIGCHI conference on Human factors in computing
+systems, pp. 210–217. ACM Press/Addison-W esley Publishing Co., 1995.
+29. Hill, Will, Larry Stead, Mark Rosenstein, and George Furnas. " Recommending and evaluating
+choices in a virtual community of use  (http://zhang.ist.psu.edu/teaching/501/readings/Hill.pdf)
+Archived  (https://web.archive.org/web/20181221074205/http://zhang.ist.psu.edu/teaching/501/r
+eadings/Hill.pdf)  2018-12-21 at the Wayback Machine ." In Proceedings of the SIGCHI
+conference on Human factors in computing systems, pp. 194–201. ACM Press/Addison-
+Wesley Publishing Co., 1995.
+30. Resnick, Paul, Neophytos Iacovou, Mitesh Suchak, Peter Bergström, and John Riedl.
+"GroupLens: an open architecture for collaborative filtering of netnews  (https://sites.ualberta.c
+a/~golmoham/SW/web%20mining%2023Jan2008/GroupLens%20An%20Open%20Architectur
+e%20for%20Collaborating%20Filtering%20%20of%20Netnews.pdf) ." In Proceedings of the
+1994 ACM conference on Computer supported cooperative work, pp. 175–186. ACM, 1994.
+31. Montaner , M.; Lopez, B.; de la Rosa, J. L. (June 2003). "A  Taxonomy of Recommender Agents
+on the Internet". Artificial Intelligence Review . 19 (4): 285–330. doi:10.1023/A:1022850703159
+(https://doi.org/10.1023%2F A%3A1022850703159) . S2CID  16544257  (https://api.semanticsch
+olar.org/CorpusID:16544257) ..
+32. Adomavicius, G.; Tuzhilin, A. (June 2005). "Toward the Next Generation of Recommender
+Systems: A Survey of the State-of-the-Art and Possible Extensions"  (http://portal.acm.org/citati
+on.cfm?id=107061 1.1070751) . IEEE T ransactions on Knowledge and Data Engineering . 17 (6):
+734–749. CiteSeerX  10.1.1.107.2790  (https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.
+1.1.107.2790) . doi:10.1109/TKDE.2005.99  (https://doi.org/10.1 109%2FTKDE.2005.99) .
+S2CID  206742345  (https://api.semanticscholar .org/CorpusID:206742345) ..
+33. Herlocker , J. L.; Konstan, J. A.; Terveen, L. G.; Riedl, J. T. (January 2004). "Evaluating
+collaborative filtering recommender systems". ACM T rans. Inf. Syst . 22 (1): 5–53.
+CiteSeerX  10.1.1.78.8384  (https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.78.838
+4). doi:10.1145/963770.963772  (https://doi.org/10.1 145%2F963770.963772) .
+S2CID  207731647  (https://api.semanticscholar .org/CorpusID:207731647) ..
+34. Beel, J.; Genzmehr , M.; Gipp, B. (October 2013). "A comparative analysis of of fline and online
+evaluations and discussion of research paper recommender system evaluation"  (https://web.ar
+chive.org/web/20160417222305/http://docear .org/papers/a_comparative_analysis_of_of fline_a
+nd_online_evaluations_and_discussion_of_research_paper_recommender_system_evaluatio
+n.pdf)  (PDF) . Proceedings of the International Workshop on Reproducibility and Replication in
+Recommender Systems Evaluation . pp. 7–14. doi:10.1145/2532508.253251 1 (https://doi.org/1
+0.1145%2F2532508.253251 1). ISBN  978-1-4503-2465-6 . S2CID  8202591  (https://api.semantic
+scholar .org/CorpusID:8202591) . Archived from the original  (http://docear .org/papers/a_compar
+ative_analysis_of_of fline_and_online_evaluations_and_discussion_of_research_paper_recom
+mender_system_evaluation.pdf)  (PDF)  on April 17, 2016 . Retrieved October 22,  2013 .
+35. Beel, J.; Langer , S.; Genzmehr , M.; Gipp, B.; Breitinger , C. (October 2013). "Research paper
+recommender system evaluation: A quantitative literature survey"  (http://docear .org/papers/res
+earch_paper_recommender_system_evaluation--a_quantitative_literature_survey .pdf) (PDF) .
+Proceedings of the International Workshop on Reproducibility and Replication in
+Recommender Systems Evaluation  (http://nbn-resolving.de/urn:nbn:de:bsz:352-0-285593) .
+pp. 15–22. doi:10.1145/2532508.2532512  (https://doi.org/10.1 145%2F2532508.2532512) .
+ISBN  978-1-4503-2465-6 . S2CID  4411601  (https://api.semanticscholar .org/CorpusID:441 160
+1).
+36. Beel, J.; Gipp, B.; Langer , S.; Breitinger , C. (July 26, 2015). "Research Paper Recommender
+Systems: A Literature Survey"  (http://nbn-resolving.de/urn:nbn:de:bsz:352-0-31 1312) .
+International Journal on Digital Libraries . 17 (4): 305–338. doi:10.1007/s00799-015-0156-0  (htt
+ps://doi.org/10.1007%2Fs00799-015-0156-0) . S2CID  207035184  (https://api.semanticscholar .o
+rg/CorpusID:207035184) .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 15/2337. John S. Breese; David Heckerman & Carl Kadie (1998). Empirical analysis of predictive
+algorithms for collaborative filtering . In Proceedings of the Fourteenth conference on
+Uncertainty in artificial intelligence (UAI'98). arXiv :1301.7363  (https://arxiv .org/abs/1301.7363) .
+38. Breese, John S.; Heckerman, David; Kadie, Carl (1998). Empirical Analysis of Predictive
+Algorithms for Collaborative Filtering  (http://research.microsoft.com/pubs/69656/tr-98-12.pdf)
+(PDF)  (Report). Microsoft Research.
+39. Koren, Yehuda; V olinsky , Chris (August 1, 2009). "Matrix Factorization Techniques for
+Recommender Systems". Computer . 42 (8): 30–37. CiteSeerX  10.1.1.147.8295  (https://citesee
+rx.ist.psu.edu/viewdoc/summary?doi=10.1.1.147.8295) . doi:10.1109/MC.2009.263  (https://doi.o
+rg/10.1 109%2FMC.2009.263) . S2CID  58370896  (https://api.semanticscholar .org/CorpusID:583
+70896) .
+40. Sarwar , B.; Karypis, G.; Konstan, J.; Riedl, J. (2000). "Application of Dimensionality Reduction
+in Recommender System A Case Study"  (http://glaros.dtc.umn.edu/gkhome/node/122) .,
+41. Allen, R.B. (1990). User Models: Theory , Method, Practice . International J. Man-Machine
+Studies.
+42. Parsons, J.; Ralph, P .; Gallagher , K. (July 2004). Using viewing time to infer user preference in
+recommender systems . AAAI W orkshop in Semantic W eb Personalization, San Jose,
+California. .
+43. Sanghack Lee and Jihoon Yang and Sung-Y ong Park, Discovery of Hidden Similarity on
+Collaborative Filtering to Overcome Sparsity Problem  (https://books.google.com/books?id=u4q
+zlZAEjegC&dq=sparsity+problem+content-based&pg=P A396) , Discovery Science, 2007.
+44. Felício, Crícia Z.; Paixão, Klérisson V .R.; Barcelos, Celia A.Z.; Preux, Philippe (July 9, 2017).
+"A Multi-Armed Bandit Model Selection for Cold-Start User Recommendation"  (https://doi.org/1
+0.1145/3079628.3079681) . Proceedings of the 25th Conference on User Modeling, Adaptation
+and Personalization  (https://hal.inria.fr/hal-01517967/file/umap2017.4hal.pdf)  (PDF) . UMAP
+'17. Bratislava, Slovakia: Association for Computing Machinery . pp. 32–40.
+doi:10.1145/3079628.3079681  (https://doi.org/10.1 145%2F3079628.3079681) . ISBN  978-1-
+4503-4635-1 . S2CID  653908  (https://api.semanticscholar .org/CorpusID:653908) .
+45. Collaborative Recommendations Using Item-to-Item Similarity Mappings  (http://patft.uspto.gov/
+netacgi/nph-Parser?Sect1=PT O2&Sect2=HIT OFF&p=1&u=/netahtml/PT O/search-bool.html&r=
+1&f=G&l=50&co1=AND&d=PTXT&s1=6,266,649.PN.&OS=PN/6,266,649&RS=PN/6,266,649)
+Archived  (https://web.archive.org/web/20150316185024/http://patft.uspto.gov/netacgi/nph-Pars
+er?Sect1=PT O2&Sect2=HIT OFF&p=1&u=%2Fnetahtml%2FPT O%2Fsearch-bool.html&r=1&f=
+G&l=50&co1=AND&d=PTXT&s1=6%2C266%2C649.PN.&OS=PN%2F6%2C266%2C649&RS
+=PN%2F6%2C266%2C649)  2015-03-16 at the Wayback Machine
+46. Aggarwal, Charu C. (2016). Recommender Systems: The T extbook . Springer . ISBN  978-3-319-
+29657-9 .
+47. Peter Brusilovsky  (2007). The Adaptive W eb (https://archive.org/details/adaptivewebmetho00br
+us). Springer . p. 325 (https://archive.org/details/adaptivewebmetho00brus/page/n331) .
+ISBN  978-3-540-72078-2 .
+48. Wang, Donghui; Liang, Yanchun; Xu, Dong; Feng, Xiaoyue; Guan, Renchu (2018). "A content-
+based recommender system for computer science publications"  (https://doi.org/10.1016%2Fj.k
+nosys.2018.05.001) . Knowledge-Based Systems . 157: 1–9. doi:10.1016/j.knosys.2018.05.001
+(https://doi.org/10.1016%2Fj.knosys.2018.05.001) .
+49. Blanda, Stephanie (May 25, 2015). "Online Recommender Systems – How Does a W ebsite
+Know What I W ant?"  (http://blogs.ams.org/mathgradblog/2015/05/25/online-recommender-syst
+ems-website-want/) . American Mathematical Society . Retrieved October 31,  2016 .
+50. X.Y. Feng, H. Zhang, Y.J. Ren, P .H. Shang, Y. Zhu, Y.C. Liang, R.C. Guan, D. Xu, (2019), " The
+Deep Learning–Based Recommender System "Pubmender" for Choosing a Biomedical
+Publication V enue: Development and V alidation Study  (https://www .jmir.org/2019/5/e12957/) ",
+Journal of Medical Internet Research , 21 (5): e12957
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 16/2351. Rinke Hoekstra, The Knowledge Reengineering Bottleneck  (http://www .semantic-web-journal.n
+et/sites/default/files/swj32.pdf) , Semantic W eb – Interoperability , Usability , Applicability 1 (2010)
+1, IOS Press
+52. Gomez-Uribe, Carlos A.; Hunt, Neil (December 28, 2015). "The Netflix Recommender System"
+(https://doi.org/10.1 145%2F2843948) . ACM T ransactions on Management Information
+Systems . 6 (4): 1–19. doi:10.1145/2843948  (https://doi.org/10.1 145%2F2843948) .
+53. Zamanzadeh Darban, Z.; V alipour , M. H. (August 15, 2022). "GHRS: Graph-based hybrid
+recommendation system with application to movie recommendation". Expert Systems with
+Applications . 200: 116850. arXiv :2111.11293  (https://arxiv .org/abs/21 11.11293) .
+doi:10.1016/j.eswa.2022.1 16850  (https://doi.org/10.1016%2Fj.eswa.2022.1 16850) .
+S2CID  244477799  (https://api.semanticscholar .org/CorpusID:244477799) .
+54. Robin Burke, Hybrid W eb Recommender Systems  (http://www .dcs.warwick.ac.uk/~acristea/cou
+rses/CS41 1/2010/Book%20-%20The%20Adaptive%20W eb/HybridW ebRecommenderSystems.
+pdf) Archived  (https://web.archive.org/web/20140912085014/http://www .dcs.warwick.ac.uk/~ac
+ristea/courses/CS41 1/2010/Book%20-%20The%20Adaptive%20W eb/HybridW ebRecommende
+rSystems.pdf)  2014-09-12 at the Wayback Machine , pp. 377-408, The Adaptive W eb, Peter
+Brusilovsky , Alfred Kobsa, W olfgang Nejdl (Ed.), Lecture Notes in Computer Science, Springer-
+Verlag, Berlin, Germany , Lecture Notes in Computer Science, V ol. 4321, May 2007, 978-3-540-
+72078-2.
+55. Hidasi, Balázs; Karatzoglou, Alexandros; Baltrunas, Linas; Tikk, Domonkos (March 29, 2016).
+"Session-based Recommendations with Recurrent Neural Networks". arXiv :1511.06939  (http
+s://arxiv .org/abs/151 1.06939)  [cs.LG  (https://arxiv .org/archive/cs.LG) ].
+56. Chen, Minmin; Beutel, Alex; Covington, Paul; Jain, Sagar; Belletti, Francois; Chi, Ed (2018).
+"Top-K Of f-Policy Correction for a REINFORCE Recommender System". arXiv :1812.02353  (htt
+ps://arxiv .org/abs/1812.02353)  [cs.LG  (https://arxiv .org/archive/cs.LG) ].
+57. Yifei, Ma; Narayanaswamy , Balakrishnan; Haibin, Lin; Hao, Ding (2020). "T emporal-Contextual
+Recommendation in Real-T ime". Proceedings of the 26th ACM SIGKDD International
+Conference on Knowledge Discovery & Data Mining . Association for Computing Machinery .
+pp. 2291–2299. doi:10.1145/3394486.3403278  (https://doi.org/10.1 145%2F3394486.3403278) .
+ISBN  978-1-4503-7998-4 . S2CID  221191348  (https://api.semanticscholar .org/CorpusID:221 191
+348).
+58. Hidasi, Balázs; Karatzoglou, Alexandros (October 17, 2018). "Recurrent Neural Networks with
+Top-k Gains for Session-based Recommendations"  (https://doi.org/10.1 145/3269206.3271761) .
+Proceedings of the 27th ACM International Conference on Information and Knowledge
+Management . CIKM '18. Torino, Italy: Association for Computing Machinery . pp. 843–852.
+arXiv :1706.03847  (https://arxiv .org/abs/1706.03847) . doi:10.1145/3269206.3271761  (https://do
+i.org/10.1 145%2F3269206.3271761) . ISBN  978-1-4503-6014-2 . S2CID  1159769  (https://api.se
+manticscholar .org/CorpusID:1 159769) .
+59. Kang, W ang-Cheng; McAuley , Julian (2018). "Self-Attentive Sequential Recommendation".
+arXiv :1808.09781  (https://arxiv .org/abs/1808.09781)  [cs.IR  (https://arxiv .org/archive/cs.IR) ].
+60. Li, Jing; Ren, Pengjie; Chen, Zhumin; Ren, Zhaochun; Lian, Tao; Ma, Jun (November 6, 2017).
+"Neural Attentive Session-based Recommendation"  (https://doi.org/10.1 145/3132847.313292
+6). Proceedings of the 2017 ACM on Conference on Information and Knowledge Management .
+CIKM '17. Singapore, Singapore: Association for Computing Machinery . pp. 1419–1428.
+arXiv :1711.04725  (https://arxiv .org/abs/171 1.04725) . doi:10.1145/3132847.3132926  (https://do
+i.org/10.1 145%2F3132847.3132926) . ISBN  978-1-4503-4918-5 . S2CID  21066930  (https://api.s
+emanticscholar .org/CorpusID:21066930) .
+61. Liu, Qiao; Zeng, Yifu; Mokhosi, Refuoe; Zhang, Haibin (July 19, 2018). "STAMP"  (https://doi.or
+g/10.1 145/3219819.3219950) . Proceedings of the 24th ACM SIGKDD International Conference
+on Knowledge Discovery & Data Mining . KDD '18. London, United Kingdom: Association for
+Computing Machinery . pp. 1831–1839. doi:10.1145/3219819.3219950  (https://doi.org/10.1 14
+5%2F3219819.3219950) . ISBN  978-1-4503-5552-0 . S2CID  50775765  (https://api.semanticsch
+olar.org/CorpusID:50775765) .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 17/2362. Xin, Xin; Karatzoglou, Alexandros; Arapakis, Ioannis; Jose, Joemon (2020). "Self-Supervised
+Reinforcement Learning for Recommender Systems". arXiv :2006.05779  (https://arxiv .org/abs/2
+006.05779)  [cs.LG  (https://arxiv .org/archive/cs.LG) ].
+63. Ie, Eugene; Jain, V ihan; Narvekar , Sanmit; Agarwal, Ritesh; W u, Rui; Cheng, Heng-Tze;
+Chandra, Tushar; Boutilier , Craig (2019). "SlateQ: A Tractable Decomposition for
+Reinforcement Learning with Recommendation Sets"  (https://research.google/pubs/pub4820
+0/). Proceedings of the T wenty-Eighth International Joint Conference on Artificial Intelligence
+(IJCAI-19) : 2592–2599.
+64. Zou, Lixin; Xia, Long; Ding, Zhuoye; Song, Jiaxing; Liu, W eidong; Yin, Dawei (2019).
+"Reinforcement Learning to Optimize Long-term User Engagement in Recommender Systems"
+(https://dl.acm.org/doi/10.1 145/3292500.3330668) . Proceedings of the 25th ACM SIGKDD
+International Conference on Knowledge Discovery & Data Mining . KDD '19. pp. 2810–2818.
+arXiv :1902.05570  (https://arxiv .org/abs/1902.05570) . doi:10.1145/3292500.3330668  (https://do
+i.org/10.1 145%2F3292500.3330668) . ISBN  978-1-4503-6201-6 . S2CID  62903207  (https://api.s
+emanticscholar .org/CorpusID:62903207) .
+65. Lakiotaki, K.; Matsatsinis; Tsoukias, A (March 201 1). "Multicriteria User Modeling in
+Recommender Systems". IEEE Intelligent Systems . 26 (2): 64–76. CiteSeerX  10.1.1.476.6726
+(https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.476.6726) .
+doi:10.1109/mis.201 1.33 (https://doi.org/10.1 109%2Fmis.201 1.33) . S2CID  16752808  (https://ap
+i.semanticscholar .org/CorpusID:16752808) .
+66. Gediminas Adomavicius; Nikos Manouselis; YoungOk Kwon. "Multi-Criteria Recommender
+Systems"  (https://web.archive.org/web/20140630021251/http://ids.csom.umn.edu/faculty/geda
+s/NSFCareer/MCRS-chapter-2010.pdf)  (PDF) . Archived from the original  (http://ids.csom.umn.
+edu/faculty/gedas/NSFCareer/MCRS-chapter-2010.pdf)  (PDF)  on June 30, 2014.
+67. Bounef fouf, Djallel (2013), DRARS, A Dynamic Risk-A ware Recommender System  (http://tel.ar
+chives-ouvertes.fr/tel-01026136/fr/)  (Ph.D.), Institut National des Télécommunications
+68. Yong Ge; Hui Xiong; Alexander Tuzhilin; Keli Xiao; Marco Gruteser; Michael J. Pazzani (2010).
+An Energy-Efficient Mobile Recommender System  (http://www .winlab.rutgers.edu/~gruteser/pa
+pers/KDD10.pdf)  (PDF) . Proceedings of the 16th ACM SIGKDD Int'l Conf. on Knowledge
+Discovery and Data Mining. New York City , New York: ACM . pp. 899–908 . Retrieved
+November 17,  2011.
+69. Pimenidis, Elias; Polatidis, Nikolaos; Mouratidis, Haralambos (August 3, 2018). "Mobile
+recommender systems: Identifying the major concepts". Journal of Information Science . 45 (3):
+387–397. arXiv :1805.02276  (https://arxiv .org/abs/1805.02276) .
+doi:10.1177/0165551518792213  (https://doi.org/10.1 177%2F0165551518792213) .
+S2CID  19209845  (https://api.semanticscholar .org/CorpusID:19209845) .
+70. Lohr, Steve (September 22, 2009). "A $1 Million Research Bargain for Netflix, and Maybe a
+Model for Others"  (https://www .nytimes.com/2009/09/22/technology/internet/22netflix.html) .
+The New York T imes .
+71. R. Bell; Y. Koren; C. V olinsky (2007). "The BellKor solution to the Netflix Prize"  (https://web.arc
+hive.org/web/20120304173001/http://www .netflixprize.com/assets/ProgressPrize2007_KorBell.
+pdf) (PDF) . Archived from the original  (http://www .netflixprize.com/assets/ProgressPrize2007_
+KorBell.pdf)  (PDF)  on March 4, 2012 . Retrieved April 30,  2009 .
+72. Bodoky , Thomas (August 6, 2009). "Mátrixfaktorizáció one million dollars"  (http://index.hu/tech/
+net/2009/08/07/matrixfaktorizacio_egymillio_dollarert/) . Index .
+73. Rise of the Netflix Hackers  (https://www .wired.com/science/discoveries/news/2007/03/72963)
+Archived  (https://web.archive.org/web/2012012401 1808/http://www .wired.com/science/discover
+ies/news/2007/03/72963)  January 24, 2012, at the Wayback Machine
+74. "Netflix Spilled Your Brokeback Mountain Secret, Lawsuit Claims"  (https://www .wired.com/threa
+tlevel/2009/12/netflix-privacy-lawsuit/) . WIRED . December 17, 2009 . Retrieved June 1,  2015 .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 18/2375. "Netflix Prize Update"  (https://web.archive.org/web/201 11127084829/http://blog.netflix.com/201
+0/03/this-is-neil-hunt-chief-product-of ficer.html) . Netflix Prize Forum. March 12, 2010. Archived
+from the original  (http://blog.netflix.com/2010/03/this-is-neil-hunt-chief-product-of ficer.html)  on
+November 27, 201 1. Retrieved December 14,  2011.
+76. Lathia, N., Hailes, S., Capra, L., Amatriain, X.: Temporal diversity in recommender systems  (htt
+p://www .academia.edu/download/46585553/lathia_sigir10.pdf) . In: Proceedings of the 33rd
+International ACMSIGIR Conference on Research and Development in Information Retrieval,
+SIGIR 2010, pp. 210–217. ACM, New York
+77. Turpin, Andrew H; Hersh, William (2001). "Why batch and user evaluations do not give the
+same results". Proceedings of the 24th annual international ACM SIGIR conference on
+Research and development in information retrieval . pp. 225–231.
+78. "MovieLens dataset"  (https://grouplens.org/datasets/movielens/) . September 6, 2013.
+79. Chen, Hung-Hsuan; Chung, Chu-An; Huang, Hsin-Chien; Tsui, W en (September 1, 2017).
+"Common Pitfalls in Training and Evaluating Recommender Systems". ACM SIGKDD
+Explorations Newsletter . 19: 37–45. doi:10.1145/3137597.3137601  (https://doi.org/10.1 145%2
+F3137597.3137601) . S2CID  10651930  (https://api.semanticscholar .org/CorpusID:10651930) .
+80. Jannach, Dietmar; Lerche, Lukas; Gedikli, Fatih; Bonnin, Geof fray (June 10, 2013). "What
+Recommenders Recommend – an Analysis of Accuracy , Popularity , and Sales Diversity
+Effects". In Carberry , Sandra; W eibelzahl, Stephan; Micarelli, Alessandro; Semeraro, Giovanni
+(eds.). User Modeling, Adaptation, and Personalization  (https://archive.org/details/usermodelin
+gadap00pero) . Lecture Notes in Computer Science. V ol. 7899. Springer Berlin Heidelberg.
+pp. 25 (https://archive.org/details/usermodelingadap00pero/page/n44) –37.
+CiteSeerX  10.1.1.465.96  (https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.465.96) .
+doi:10.1007/978-3-642-38844-6_3  (https://doi.org/10.1007%2F978-3-642-38844-6_3) .
+ISBN  978-3-642-38843-9 .
+81. Turpin, Andrew H.; Hersh, William (January 1, 2001). "Why batch and user evaluations do not
+give the same results"  (https://archive.org/details/proceedingsof24t0000inte/page/225) .
+Proceedings of the 24th annual international ACM SIGIR conference on Research and
+development in information retrieval . SIGIR '01. New York, NY , USA: ACM. pp. 225–231  (http
+s://archive.org/details/proceedingsof24t0000inte/page/225) . CiteSeerX  10.1.1.165.5800  (http
+s://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.165.5800) . doi:10.1145/383952.383992
+(https://doi.org/10.1 145%2F383952.383992) . ISBN  978-1-581 13-331-8 . S2CID  189031 14 (http
+s://api.semanticscholar .org/CorpusID:189031 14).
+82. Langer , Stefan (September 14, 2015). "A  Comparison of Of fline Evaluations, Online
+Evaluations, and User Studies in the Context of Research-Paper Recommender Systems". In
+Kapidakis, Sarantos; Mazurek, Cezary; W erla, Marcin (eds.). Research and Advanced
+Technology for Digital Libraries . Lecture Notes in Computer Science. V ol. 9316. Springer
+International Publishing. pp. 153–168. doi:10.1007/978-3-319-24592-8_12  (https://doi.org/10.1
+007%2F978-3-319-24592-8_12) . ISBN  978-3-319-24591-1 .
+83. Basaran, Daniel; Ntoutsi, Eirini; Zimek, Arthur (2017). Proceedings of the 2017 SIAM
+International Conference on Data Mining . pp. 390–398. doi:10.1137/1.978161 1974973.44  (http
+s://doi.org/10.1 137%2F1.978161 1974973.44) . ISBN  978-1-61 197-497-3 .
+84. Beel, Joeran; Genzmehr , Marcel; Langer , Stefan; Nürnberger , Andreas; Gipp, Bela (January 1,
+2013). "A  comparative analysis of of fline and online evaluations and discussion of research
+paper recommender system evaluation". Proceedings of the International Workshop on
+Reproducibility and Replication in Recommender Systems Evaluation . RepSys '13. New York,
+NY, USA: ACM. pp. 7–14. CiteSeerX  10.1.1.1031.973  (https://citeseerx.ist.psu.edu/viewdoc/su
+mmary?doi=10.1.1.1031.973) . doi:10.1145/2532508.253251 1 (https://doi.org/10.1 145%2F2532
+508.253251 1). ISBN  978-1-4503-2465-6 . S2CID  8202591  (https://api.semanticscholar .org/Corp
+usID:8202591) .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 19/2385. Cañamares, Rocío; Castells, Pablo (July 2018). Should I Follow the Crowd? A Probabilistic
+Analysis of the Effectiveness of Popularity in Recommender Systems  (https://web.archive.org/
+web/20210414070127/http://ir .ii.uam.es/pubs/sigir2018.pdf)  (PDF) . 41st Annual International
+ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2018).
+Ann Arbor , Michigan, USA: ACM. pp. 415–424. doi:10.1145/3209978.3210014  (https://doi.org/1
+0.1145%2F3209978.3210014) . Archived from the original  (http://ir .ii.uam.es/pubs/sigir2018.pdf)
+(PDF)  on April 14, 2021 . Retrieved March 5,  2021 .
+86. Cañamares, Rocío; Castells, Pablo; Mof fat, Alistair (March 2020). "Offline Evaluation Options
+for Recommender Systems"  (http://ir .ii.uam.es/pubs/irj2020.pdf)  (PDF) . Information Retrieval .
+23 (4). Springer: 387–410. doi:10.1007/s10791-020-09371-3  (https://doi.org/10.1007%2Fs1079
+1-020-09371-3) . S2CID  213169978  (https://api.semanticscholar .org/CorpusID:213169978) .
+87. Ziegler CN, McNee SM, Konstan JA, Lausen G (2005). "Improving recommendation lists
+through topic diversification". Proceedings of the 14th international conference on World W ide
+Web. pp. 22–32.
+88. Castells, Pablo; Hurley , Neil J.; V argas, Saúl (2015). "Novelty and Diversity in Recommender
+Systems"  (https://link.springer .com/chapter/10.1007/978-1-4899-7637-6_26) . In Ricci,
+Francesco; Rokach, Lior; Shapira, Bracha (eds.). Recommender Systems Handbook  (2 ed.).
+Springer US. pp. 881–918. doi:10.1007/978-1-4899-7637-6_26  (https://doi.org/10.1007%2F97
+8-1-4899-7637-6_26) . ISBN  978-1-4899-7637-6 .
+89. Joeran Beel; Stefan Langer; Marcel Genzmehr; Andreas Nürnberger (September 2013).
+"Persistence in Recommender Systems: Giving the Same Recommendations to the Same
+Users Multiple Times"  (http://docear .org/papers/persistence_in_recommender_systems_--_givi
+ng_the_same_recommendations_to_the_same_users_multiple_times.pdf)  (PDF) . In Trond
+Aalberg; Milena Dobreva; Christos Papatheodorou; Giannis Tsakonas; Charles Farrugia (eds.).
+Proceedings of the 17th International Conference on Theory and Practice of Digital Libraries
+(TPDL  2013) . Lecture Notes of Computer Science (LNCS). V ol. 8092. Springer . pp. 390–394 .
+Retrieved November 1,  2013 .
+90. Cosley , D.; Lam, S.K.; Albert, I.; Konstan, J.A.; Riedl, J (2003). "Is seeing believing?: how
+recommender system interfaces af fect users' opinions"  (https://pdfs.semanticscholar .org/d7d5/
+47012091d1 1ba0b0bf4a6630c5689789c22e.pdf)  (PDF) . Proceedings of the SIGCHI
+conference on Human factors in computing systems . pp. 585–592. S2CID  8307833  (https://api.
+semanticscholar .org/CorpusID:8307833) .
+91. Pu, P .; Chen, L.; Hu, R. (2012). "Evaluating recommender systems from the user's perspective:
+survey of the state of the art"  (http://doc.rero.ch/record/317166/files/1 1257_201 1_Article_91 15.
+pdf) (PDF) . User Modeling and User -Adapted Interaction : 1–39.
+92. Naren Ramakrishnan; Benjamin J. Keller; Batul J. Mirza; Ananth Y. Grama; George Karypis
+(2001). "Privacy risks in recommender systems"  (https://archive.org/details/sigir2002proceed00
+00inte/page/54) . IEEE Internet Computing . 5 (6). Piscataway , NJ: IEEE Educational Activities
+Department : 54–62  (https://archive.org/details/sigir2002proceed0000inte/page/54) .
+CiteSeerX  10.1.1.2.2932  (https://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.2.2932) .
+doi:10.1109/4236.968832  (https://doi.org/10.1 109%2F4236.968832) . ISBN  978-1-581 13-561-9 .
+S2CID  1977107  (https://api.semanticscholar .org/CorpusID:1977107) .
+93. Joeran Beel; Stefan Langer; Andreas Nürnberger; Marcel Genzmehr (September 2013). "The
+Impact of Demographics (Age and Gender) and Other User Characteristics on Evaluating
+Recommender Systems"  (http://docear .org/papers/the_impact_of_users'_demographics_(age_
+and_gender)_and_other_characteristics_on_evaluating_recommender_systems.pdf)  (PDF) . In
+Trond Aalberg; Milena Dobreva; Christos Papatheodorou; Giannis Tsakonas; Charles Farrugia
+(eds.). Proceedings of the 17th International Conference on Theory and Practice of Digital
+Libraries (TPDL  2013) . Springer . pp. 400–404 . Retrieved November 1,  2013 .
+94. Konstan JA, Riedl J (2012). "Recommender systems: from algorithms to user experience"  (http
+s://link.springer .com/content/pdf/10.1007/s1 1257-01 1-9112-x.pdf)  (PDF) . User Modeling and
+User -Adapted Interaction . 22 (1–2): 1–23. doi:10.1007/s1 1257-01 1-9112-x (https://doi.org/10.1
+007%2Fs1 1257-01 1-9112-x) . S2CID  8996665  (https://api.semanticscholar .org/CorpusID:89966
+65).
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 20/2395. Ricci F , Rokach L, Shapira B, Kantor BP  (201 1). Recommender systems handbook . pp. 1–35.
+Bibcode :2011rsh..book.....R  (https://ui.adsabs.harvard.edu/abs/201 1rsh..book.....R) .
+96. Möller , Judith; Trilling, Damian; Helberger , Natali; van Es, Bram (July 3, 2018). "Do not blame it
+on the algorithm: an empirical assessment of multiple recommender systems and their impact
+on content diversity"  (https://www .tandfonline.com/doi/full/10.1080/13691 18X.2018.1444076) .
+Information, Communication & Society . 21 (7): 959–977. doi:10.1080/13691 18X.2018.1444076
+(https://doi.org/10.1080%2F13691 18X.2018.1444076) . hdl:11245.1/4242e2e0-3beb-40a0-
+a6cb-d8947a13efb4  (https://hdl.handle.net/1 1245.1%2F4242e2e0-3beb-40a0-a6cb-d8947a13e
+fb4). ISSN  1369-1 18X (https://www .worldcat.org/issn/1369-1 18X) . S2CID  149344712  (https://a
+pi.semanticscholar .org/CorpusID:149344712) .
+97. Montaner , Miquel; López, Beatriz; de la Rosa, Josep Lluís (2002). "Developing trust in
+recommender agents"  (https://www .researchgate.net/publication/221454720) . Proceedings of
+the first international joint conference on Autonomous agents and multiagent systems: part 1 .
+pp. 304–305.
+98. Beel, Joeran, Langer , Stefan, Genzmehr , Marcel (September 2013). "Sponsored vs. Organic
+(Research Paper) Recommendations and the Impact of Labeling"  (http://docear .org/papers/spo
+nsored_vs._organic_(research_paper)_recommendations_and_the_impact_of_labeling.pdf)
+(PDF) . In Trond Aalberg, Milena Dobreva, Christos Papatheodorou, Giannis Tsakonas, Charles
+Farrugia (eds.). Proceedings of the 17th International Conference on Theory and Practice of
+Digital Libraries (TPDL  2013) . pp. 395–399 . Retrieved December 2,  2013 .
+99. Ferrari Dacrema, Maurizio; Boglio, Simone; Cremonesi, Paolo; Jannach, Dietmar (January 8,
+2021). "A Troubling Analysis of Reproducibility and Progress in Recommender Systems
+Research"  (https://dl.acm.org/doi/10.1 145/3434185) . ACM T ransactions on Information
+Systems . 39 (2): 1–49. arXiv :1911.07698  (https://arxiv .org/abs/191 1.07698) .
+doi:10.1145/3434185  (https://doi.org/10.1 145%2F3434185) . hdl:11311/1164333  (https://hdl.han
+dle.net/1 1311%2F1 164333) . S2CID  208138060  (https://api.semanticscholar .org/CorpusID:2081
+38060) .
+100. Ferrari Dacrema, Maurizio; Cremonesi, Paolo; Jannach, Dietmar (2019). "Are we really making
+much progress? A worrying analysis of recent neural recommendation approaches"  (https://dl.a
+cm.org/authorize?N684126) . Proceedings of the 13th ACM Conference on Recommender
+Systems . RecSys '19. ACM. pp. 101–109. arXiv :1907.06902  (https://arxiv .org/abs/1907.06902) .
+doi:10.1145/3298689.3347058  (https://doi.org/10.1 145%2F3298689.3347058) .
+hdl:11311/1108996  (https://hdl.handle.net/1 1311%2F1 108996) . ISBN  978-1-4503-6243-6 .
+S2CID  196831663  (https://api.semanticscholar .org/CorpusID:196831663) . Retrieved
+October 16,  2019 .
+101. Rendle, Stef fen; Krichene, W alid; Zhang, Li; Anderson, John (September 22, 2020). "Neural
+Collaborative Filtering vs. Matrix Factorization Revisited". Fourteenth ACM Conference on
+Recommender Systems . pp. 240–248. arXiv :2005.09683  (https://arxiv .org/abs/2005.09683) .
+doi:10.1145/3383313.3412488  (https://doi.org/10.1 145%2F3383313.3412488) . ISBN  978-1-
+4503-7583-2 .
+102. Sun, Zhu; Yu, Di; Fang, Hui; Yang, Jie; Qu, Xinghua; Zhang, Jie; Geng, Cong (2020). "Are W e
+Evaluating Rigorously? Benchmarking Recommendation for Reproducible Evaluation and Fair
+Comparison"  (https://dl.acm.org/doi/10.1 145/3383313.3412489) . Fourteenth ACM Conference
+on Recommender Systems . ACM. pp. 23–32. doi:10.1145/3383313.3412489  (https://doi.org/1
+0.1145%2F3383313.3412489) . ISBN  978-1-4503-7583-2 . S2CID  221785064  (https://api.sema
+nticscholar .org/CorpusID:221785064) .
+103. Schif ferer, Benedikt; Deotte, Chris; Puget, Jean-François; de Souza Pereira, Gabriel; Titericz,
+Gilberto; Liu, Jiwei; Ak, Ronay . "Using Deep Learning to Win the Booking.com WSDM
+WebTour21 Challenge on Sequential Recommendations"  (https://web.archive.org/web/202103
+25063047/https://web.ec.tuwien.ac.at/webtour21/wp-content/uploads/2021/03/shif ferer.pdf)
+(PDF) . WSDM '21: ACM Conference on W eb Search and Data Mining . ACM. Archived from the
+original  (https://web.ec.tuwien.ac.at/webtour21/wp-content/uploads/2021/03/shif ferer.pdf)
+(PDF)  on March 25, 2021 . Retrieved April 3,  2021 .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 21/23104. Volkovs, Maksims; Rai, Himanshu; Cheng, Zhaoyue; W u, Ga; Lu, Yichao; Sanner , Scott
+(2018). "Two-stage Model for Automatic Playlist Continuation at Scale"  (https://dl.acm.org/doi/1
+0.1145/3267471.3267480) . Proceedings of the ACM Recommender Systems Challenge 2018 .
+ACM. pp. 1–6. doi:10.1145/3267471.3267480  (https://doi.org/10.1 145%2F3267471.3267480) .
+ISBN  978-1-4503-6586-4 . S2CID  52942462  (https://api.semanticscholar .org/CorpusID:529424
+62).
+105. Yves Raimond, Justin Basilico Deep Learning for Recommender Systems  (https://www2.slides
+hare.net/moustaki/deep-learning-for-recommender-systems-86752234) , Deep Learning Re-
+Work SF Summit 2018
+106. Ekstrand, Michael D.; Ludwig, Michael; Konstan, Joseph A.; Riedl, John T. (January 1, 201 1).
+"Rethinking the recommender research ecosystem". Proceedings of the fifth ACM conference
+on Recommender systems . RecSys '1 1. New York, NY , USA: ACM. pp. 133–140.
+doi:10.1145/2043932.2043958  (https://doi.org/10.1 145%2F2043932.2043958) . ISBN  978-1-
+4503-0683-6 . S2CID  2215419  (https://api.semanticscholar .org/CorpusID:2215419) .
+107. Konstan, Joseph A.; Adomavicius, Gediminas (January 1, 2013). "T oward identification and
+adoption of best practices in algorithmic recommender systems research". Proceedings of the
+International Workshop on Reproducibility and Replication in Recommender Systems
+Evaluation . RepSys '13. New York, NY , USA: ACM. pp. 23–28. doi:10.1145/2532508.2532513
+(https://doi.org/10.1 145%2F2532508.2532513) . ISBN  978-1-4503-2465-6 . S2CID  333956  (http
+s://api.semanticscholar .org/CorpusID:333956) .
+108. Breitinger , Corinna; Langer , Stefan; Lommatzsch, Andreas; Gipp, Bela (March 12, 2016).
+"Towards reproducibility in recommender-systems research"  (http://nbn-resolving.de/urn:nbn:d
+e:bsz:352-0-324818) . User Modeling and User -Adapted Interaction . 26 (1): 69–101.
+doi:10.1007/s1 1257-016-9174-x  (https://doi.org/10.1007%2Fs1 1257-016-9174-x) . ISSN  0924-
+1868  (https://www .worldcat.org/issn/0924-1868) . S2CID  388764  (https://api.semanticscholar .or
+g/CorpusID:388764) .
+109. Said, Alan; Bellogín, Alejandro (October 1, 2014). "Comparative recommender system
+evaluation". Proceedings of the 8th ACM Conference on Recommender systems . RecSys '14.
+New York, NY , USA: ACM. pp. 129–136. doi:10.1145/2645710.2645746  (https://doi.org/10.1 14
+5%2F2645710.2645746) . hdl:10486/665450  (https://hdl.handle.net/10486%2F665450) .
+ISBN  978-1-4503-2668-1 . S2CID  15665277  (https://api.semanticscholar .org/CorpusID:156652
+77).
+110. Verma, P .; Sharma, S. (2020). "Artificial Intelligence based Recommendation System". 2020
+2nd International Conference on Advances in Computing, Communication Control and
+Networking (ICACCCN) . pp. 669–673. doi:10.1109/ICACCCN51052.2020.9362962  (https://doi.
+org/10.1 109%2FICACCCN51052.2020.9362962) . ISBN  978-1-7281-8337-4 .
+S2CID  232150789  (https://api.semanticscholar .org/CorpusID:232150789) .
+111. Khanal, S.S. (July 2020). "A  systematic review: machine learning based recommendation
+systems for e-learning". Educ Inf T echnol . 25 (4): 2635–2664. doi:10.1007/s10639-019-10063-
+9 (https://doi.org/10.1007%2Fs10639-019-10063-9) . S2CID  254475908  (https://api.semanticsc
+holar .org/CorpusID:254475908) .
+112. Zhang, Q. (February 2021). "Artificial intelligence in recommender systems"  (https://doi.org/10.
+1007%2Fs40747-020-00212-w) . Complex and Intelligent Systems . 7: 439–457.
+doi:10.1007/s40747-020-00212-w  (https://doi.org/10.1007%2Fs40747-020-00212-w) .
+113. Wu, L. (May 2023). "A  Survey on Accuracy-Oriented Neural Recommendation: From
+Collaborative Filtering to Information-Rich Recommendation". IEEE T ransactions on
+Knowledge and Data Engineering . 35 (5): 4425–4445. arXiv :2104.13030  (https://arxiv .org/abs/
+2104.13030) . doi:10.1109/TKDE.2022.3145690  (https://doi.org/10.1 109%2FTKDE.2022.31456
+90).
+114. Samek, W . (March 2021). "Explaining Deep Neural Networks and Beyond: A Review of
+Methods and Applications"  (https://doi.org/10.1 109%2FJPROC.2021.3060483) . Proceedings of
+the IEEE . 109 (3): 247–278. arXiv :2003.07631  (https://arxiv .org/abs/2003.07631) .
+doi:10.1109/JPROC.2021.3060483  (https://doi.org/10.1 109%2FJPROC.2021.3060483) .
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 22/23115. Eisenstein, J. (October 2019). Introduction to natural language processing . MIT  press.
+ISBN  9780262042840 .
+Books
+Kim Falk (January 2019), Practical Recommender Systems, Manning Publications,
+ISBN  9781617292705
+Bharat Bhasker; K. Srikumar (2010). Recommender Systems in E-Commerce  (https://web.arch
+ive.org/web/20100901 164550/http://www .tatamcgrawhill.com/html/9780070680678.html) . CUP .
+ISBN  978-0-07-068067-8 . Archived from the original  (http://www .tatamcgrawhill.com/html/9780
+070680678.html)  on September 1, 2010.
+Francesco Ricci; Lior Rokach; Bracha Shapira; Paul B. Kantor , eds. (201 1). Recommender
+Systems Handbook  (https://www .springer .com/computer/ai/book/978-0-387-85819-7) . Springer .
+ISBN  978-0-387-85819-7 .
+Bracha Shapira; Lior Rokach (June 2012). Building Effective Recommender Systems  (https://ar
+chive.today/20140501234448/http://www .springer .com/computer/ai/book/978-1-4419-0048-7) .
+Springer . ISBN  978-1-4419-0047-0 . Archived from the original  (https://www .springer .com/comp
+uter/ai/book/978-1-4419-0048-7)  on May 1, 2014.
+Dietmar Jannach; Markus Zanker; Alexander Felfernig; Gerhard Friedrich (2010).
+Recommender Systems:An Introduction  (https://web.archive.org/web/20150831032309/http://w
+ww.cambridge.org/uk/catalogue/catalogue.asp?isbn=9780521493369) . CUP . ISBN  978-0-521-
+49336-9 . Archived from the original  (http://www .cambridge.org/uk/catalogue/catalogue.asp?isb
+n=9780521493369)  on August 31, 2015.
+Seaver , Nick (2022). Computing T aste: Algorithms and the Makers of Music Recommendation .
+University of Chicago Press.
+Scientific articles
+Prem Melville, Raymond J. Mooney , and Ramadass Nagarajan. (2002) Content-Boosted
+Collaborative Filtering for Improved Recommendations.  (http://www .cs.utexas.edu/users/ml/pa
+pers/cbcf-aaai-02.pdf)  Proceedings of the Eighteenth National Conference on Artificial
+Intelligence  (AAAI-2002), pp. 187–192, Edmonton, Canada, July 2002.
+Meyer , Frank (2012). "Recommender systems in industrial contexts". arXiv :1203.4487  (https://
+arxiv.org/abs/1203.4487)  [cs.IR  (https://arxiv .org/archive/cs.IR) ].
+Bounef fouf, Djallel (2012), "Following the User's Interests in Mobile Context-A ware
+Recommender Systems: The Hybrid-e-greedy Algorithm", Proceedings of the 2012 26th
+International Conference on Advanced Information Networking and Applications Workshops  (ht
+tps://web.archive.org/web/20140514042848/http://www-inf.int-evry .fr:80/~bounef_d/index_fichi
+ers/Hybrid-e-greedy%20for%20Mobile%20Context-aware%20Recommender%20System.pdf)
+(PDF) , Lecture Notes in Computer Science, IEEE Computer Society , pp. 657–662, ISBN  978-
+0-7695-4652-0 , archived from the original  (http://www-inf.int-evry .fr/~bounef_d/index_fichiers/H
+ybrid-e-greedy%20for%20Mobile%20Context-aware%20Recommender%20System.pdf)  (PDF)
+on May 14, 2014 .
+Bounef fouf, Djallel (2013), DRARS, A Dynamic Risk-A ware Recommender System  (http://tel.ar
+chives-ouvertes.fr/tel-01026136/fr/)  (Ph.D.), Institut National des Télécommunications .
+Robert M. Bell; Jim Bennett; Yehuda Koren & Chris V olinsky (May 2009). "The Million Dollar
+Programming Prize"  (https://web.archive.org/web/2009051 1144610/http://www .spectrum.ieee.o
+rg/may09/8788) . IEEE Spectrum . Archived from the original  (http://www .spectrum.ieee.org/may
+09/8788)  on May 1 1, 2009 . Retrieved December 10,  2018 .Further reading
+External links
+4/11/24, 3:08 AM Recommender system - Wikipedia
+https://en.wikipedia.org/wiki/Recommender_system#:~:text=A recommender system%2C or a,pertinent to a particular user. 23/23Hangartner , Rick, "What is the Recommender Industry?"  (https://web.archive.org/web/2007121
+9144013/http://www .msearchgroove.com/2007/12/17/guest-column-what-is-the-recommender-i
+ndustry/) , MSearchGroove, December 17, 2007.
+ACM Conference on Recommender Systems  (http://recsys.acm.org/)
+Recsys group at Politecnico di Milano  (http://recsys.deib.polimi.it/)
+Data Science: Data to Insights from MIT  (recommendation systems)  (https://web.archive.org/w
+eb/201701 18041300/https://mitprofessionalx.mit.edu/courses/course-v1:MITProfessionalX+DS
+x+2016_T1/about)
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Recommender_system&oldid=1216254090"

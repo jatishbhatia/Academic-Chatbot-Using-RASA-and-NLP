@@ -1,0 +1,373 @@
+version: "3.1"
+#Add nlu
+nlu:
+- regex: uni
+  examples: |
+    - University of Concordia
+    - Concordia University
+    - University of Toronto
+    - Waterloo University
+    - McGill University
+
+- regex: course
+  examples: |
+    - Computer Networks and Protocol
+    - Applied Artifical Intelligence
+    - Intelligent Systems
+    - Algorithm Design & Analysis
+    
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: get_course_by_university
+  examples: |
+    - List all courses offered by [Concordia University](uni)
+    - List all courses offered by [concordia university](uni)
+    - List all courses offered by [__oov__](uni)
+    - What are the courses available at [Harvard University](uni)?
+    - Can you provide a list of courses at [Concordia University](uni)?
+    - Show me the courses offered by [Mcgill university](uni)
+    - Tell me about the courses available at university(uni)
+
+- intent: get_courses_discussed_topic
+  examples: |
+    - In which courses is [Knowledge Graph](topic) discussed?
+    - In which courses is [Text Mining](topic) discussed?
+    - In which courses is [Text Mining](topic) discussed?
+    - In which courses is [__oov__](topic) discussed?
+    - List all courses discussed on [Computer Networks & Protocol](topic)
+    - What courses are related to [Computer Networks & Protocol](topic)?
+    - Show me courses related to [Computer Network](topic)
+    - Can you provide courses related to [topic](topic)?
+    - Tell me about courses discussed on [topic](topic)
+
+- intent: get_topics_in_course_lecture
+  examples: |
+    - Which topics are covered in [Intelligent Systems](course) during lecture [1](lecture)?
+    - Which topics are covered in [Computer Networks & Protocol](course) during lecture [5](lecture)?
+    - Which topics are covered in [Algorithm Design & Analysis](course) during lecture [2] (lecture)?
+    - Which topics are covered in [__oov__](course) during lecture [__oov__](lecture)?
+    - Which topics are covered in [Accounting 101 2232 4 A](course) during lecture [1] (lecture)?
+    - List all topics discussed in lecture [10](lecture) of course [Intelligent Systems](course)
+ 
+
+- intent: get_courses_by_university_subject
+  examples: |
+    - List all courses offered by [Concordia University](uni) within the [SOEN](subject)
+    - List all courses offered by [Concordia University](uni) within the [COMP](subject)
+    - List all courses offered by [Concordia University](uni) within the [ENCS](subject)
+    - List all courses offered by [Concordia University](uni) within the [ACCO](subject)
+    - List all courses offered by [Concordia University](uni) within the [FAS](subject)
+    - List all courses offered by [__oov__](uni) within the [__oov__](subject)
+    - List all courses offered by [Concordia University](uni) within the [__oov__](subject)
+#    - What are the courses available at [Concordia University](uni) within the [COMP](subject)?
+#    - What are the courses available at [Concordia University](uni) within the [ENCS](subject)?
+#    - Can you provide a list of courses at [Concordia University](uni) within the [COMP](subject)?
+#    - Can you provide a list of courses at [Concordia University](uni) within the [ENCS](subject)?
+#    - Show me the courses offered by [Concordia University](uni) within the [COMP](subject)
+#    - Show me the courses offered by [Concordia University](uni) within the [ENCS](subject)
+#    - Tell me about the courses available at [Concordia University](uni) within the [COMP](subject)
+#    - Tell me about the courses available at [Concordia University](uni) within the [ENCS](subject)
+
+- intent: get_material_topic_in_course
+  examples: |
+    - What materials are recommended for [Knowledge Graphs](topic) in [COMP](subject) [6461](sub_num)?
+    - What materials are recommended for [Text Mining](topic) in [SOEN](subject) [6481](sub_num)?
+    - What materials are recommended for [Application Layer](topic) in [ACCO](subject) [6651](sub_num)?
+    - What materials are recommended for [Knowledge Graphs](topic) in [ENCS](subject) [6741](sub_num)?
+    - What materials are recommended for [__oov__](topic) in [__oov__](subject) [__oov__](sub_num)?
+    - What materials are recommended for [__oov__](topic) in [COMP](subject) [6461](sub_num)?
+  # - List all material covered in [subject](subject) [sub_num](sub_num) related to [topic](topic)
+  # - What material is covered in [subject](subject) [sub_num](sub_num) related to [topic](topic)?
+  # - Show me material covered in [subject](subject) [sub_num](sub_num) related to [topic](topic)
+  # - Can you provide material covered in [subject](subject) [sub_num](sub_num) related to [topic](topic)?
+  # - Tell me about material covered in [subject](subject) [sub_num](sub_num) related to [topic](topic)
+
+- intent: get_credits_of_course
+  examples: |
+    - How many credits is [SOEN](subject) [6461](sub_num) worth?
+    - How many credits is SOEN(subject) 6461(sub_num) worth?
+    - How many credits is [COMP](subject) [6741](sub_num) worth?
+    - How many credits is COMP(subject) 6741(sub_num) worth?
+    - How many credits is [COMP](subject) [6721](sub_num) worth?
+    - How many credits is [__oov__](subject) [__oov__](sub_num) worth?
+    - How many credits is COMP(subject) 6721(sub_num) worth?
+    - How many credits is [ENCS](subject) [6331](sub_num) worth?
+    - How many credits is [ACCO](subject) [123](sub_num) worth?
+  # - What are the credits for course [subject](subject) [sub_num](sub_num)?
+  # - How many credits is course [subject](subject) [sub_num](sub_num) worth?
+  # - Tell me the credits for course [subject](subject) [sub_num](sub_num)
+  # - Show me the credit value for course [subject](subject) [sub_num](sub_num)
+  # - Can you provide the credits for course [subject](subject) [sub_num](sub_num)?
+
+- intent: get_links_course_number
+  examples: |
+    - For [SOEN](subject) [6431](sub_num), what additional resources are available?
+    - For [COMP](subject) [6721](sub_num), what additional resources are available?
+    - For [COMP](subject) [6741](sub_num), what additional resources are available?
+    - For [__oov__](subject) [__oov__](sub_num), what additional resources are available?
+    - For [ENCS](subject) [472](sub_num), what additional resources are available?
+    - For [SOEN](subject) [474](sub_num), what additional resources are available?
+
+  # - Provide links for course [subject](subject) [sub_num](sub_num)
+  # - Show resources for course [subject](subject) [sub_num](sub_num)
+  # - What are the links related to course [subject](subject) [sub_num](sub_num)?
+  # - Can you give me links for course [subject](subject) [sub_num](sub_num)?
+  # - Show me websites related to course [subject](subject) [sub_num](sub_num)}
+
+- intent: get_content_of_lecture_in_course
+  examples: |
+    - Detail the content available for lecture [1](lecture) in [COMP](subject) [6721](sub_num).
+    - Detail the content available for lecture [2](lecture) in [COMP](subject) [6741](sub_num).
+    - Detail the content available for lecture [__oov__](lecture) in [__oov__](subject) [__oov__](sub_num).
+    - Detail the content available for lecture [2](lecture) in [__oov__](subject) [__oov__](sub_num).
+    - Detail the content available for lecture [11](lecture) in [COMP](subject) [472](sub_num).
+    - Detail the content available for lecture [6](lecture) in [SOEN](subject) [6551](sub_num).
+  # - List all content for lecture [lecture](lecture) in course [subject](subject) [sub_num](sub_num)
+  # - What content is covered in lecture [lecture](lecture) of course [subject](subject) [sub_num](sub_num)?
+  # - Show me content for lecture [lecture](lecture) in course [subject](subject) [sub_num](sub_num)
+  # - Can you provide content for lecture [lecture](lecture) in course [subject](subject) [sub_num](sub_num)?
+  # - Tell me about content for lecture [lecture](lecture) in course [subject](subject) [sub_num](sub_num)
+
+- intent: get_reading_for_topic_course
+  examples: |
+    - What reading materials are recommended for studying [ARQ](topic) in [Computer Networks and Protocol](course)?
+    - What reading materials are recommended for studying [Knowledge Graphs](topic) in [Intelligent Systems](course)?
+    - What reading materials are recommended for studying [distributed database](topic) in [Computer Networks & Protocol](course)?
+    - What reading materials are recommended for studying [encryption](topic) in [Applied Artifical Intelligence](course)?
+    - What reading materials are recommended for studying [__oov__](topic) in [Intelligent Systems](course)?
+    - What reading materials are recommended for studying [text mining](topic) in [Algorithm Design & Analysis](course)?
+    
+  # - List all readings for topic [topic](topic) in course [course](course)
+  # - What are the readings for topic [topic](topic) in course [course](course)?
+  # - Show me readings for topic [topic](topic) in course [course](course)
+  # - Can you provide readings for topic [topic](topic) in course [course](course)?
+  # - Tell me about readings for topic [topic](topic) in course [course](course)
+
+- intent: get_competency_by_course
+  examples: |
+    - What competencies does a student gain after completing [COMP](subject) [6741](sub_num)?
+    - What competencies does a student gain after completing [COMP](subject) [6461](sub_num)?
+    - What competencies does a student gain after completing [__oov__](subject) [__oov__](sub_num)?
+    - What competencies does a student gain after completing [COMP](subject) [__oov__](sub_num)?
+    - What competencies does a student gain after completing [SOEN](subject) [472](sub_num)?
+    - What competencies does a student gain after completing [SOEN](subject) [124](sub_num)?
+    - What competencies are gained by completing course [COMP](subject) [6741](sub_num)?
+    - What competencies are gained by completing course [COMP](subject) [6461](sub_num)?
+    - Show me the competencies achieved by completing course [COMP](subject) [6741](sub_num)?
+    - Show me the competencies achieved by completing course [COMP](subject) [6461](sub_num)?
+    - Can you provide the competencies for course [COMP](subject) [6741](sub_num)?
+    - Can you provide the competencies for course [COMP](subject) [6461](sub_num)?
+    - Tell me about the competencies gained by completing course [COMP](subject) [6741](sub_num)?
+    - Tell me about the competencies gained by completing course [COMP](subject) [6461](sub_num)?
+    - Show competencies for course [COMP](subject) [6741](sub_num)?
+    - Show competencies for course [COMP](subject) [6461](sub_num)?
+
+- intent: get_student_grade_in_course
+  examples: |
+    - What grades did [Nandini](fname) [Bibra](lname) achieve in [COMP](subject) [6521](sub_num)?
+    - What grades did [Nandini](fname) [Bibra](lname) achieve in [COMP](subject) [6321](sub_num)?
+    - What grades did [Shruti](fname) [Bibra](lname) achieve in [COMP](subject) [6521](sub_num)?
+    - What grades did [Nandini](fname) [Bibra](lname) achieve in [COMP](subject) [6741](sub_num)?
+    - What grades did [Shruti](fname) [Bibra](lname) achieve in [COMP](subject) [6741](sub_num)?
+    - What grades did [Jatish](fname) [Bhatia](lname) achieve in [COMP](subject) [6741](sub_num)?
+    - What grades did [Jatish](fname) [Bhatia](lname) achieve in [COMP](subject) [6521](sub_num)?
+    - What grades did [__oov__](fname) [__oov__](lname) achieve in [COMP](subject) [6521](sub_num)?
+    - What is the grade of [Jatish](fname) [Bhatia](lname) in course [COMP](subject) [6741](sub_num)?
+    - What is the grade of [Nandini](fname) [Bibra](lname) in course [COMP](subject) [6521](sub_num)?
+    - Show me the grade of [Jatish](fname) [Bhatia](lname) in course [COMP](subject) [6741](sub_num)?
+    - Show me the grade of [Nandini](fname) [Bibra](lname) in course [COMP](subject) [6521](sub_num)?
+    - Can you provide the grade of [Jatish](fname) [Bhatia](lname) in course [COMP](subject) [6741](sub_num)?
+    - Can you provide the grade of [Nandini](fname) [Bibra](lname) in course [COMP](subject) [6521](sub_num)?
+    - Tell me about the grade of [Jatish](fname) [Bhatia](lname) in course [COMP](subject) [6741](sub_num)?
+    - Tell me about the grade of [Nandini](fname) [Bibra](lname) in course [COMP](subject) [6521](sub_num)?
+    - Show grade of [Jatish](fname) [Bhatia](lname) in course [COMP](subject) [6741](sub_num)?
+    - Show grade of [Nandini](fname) [Bibra](lname) in course [COMP](subject) [6521](sub_num)?
+
+- intent: student_completed_courses
+  examples: |
+    - Which students have completed [COMP](subject) [6721](sub_num)?
+    - Which students have completed [COMP](subject) [6741](sub_num)?
+    - Which students have completed [SOEN](subject) [482](sub_num)?
+    - Which students have completed [__oov__](subject) [__oov__](sub_num)?
+    - Which students have completed [ACT](subject) [124](sub_num)?
+    - Who has completed [COMP](subject) [6721](sub_num)?
+    - Who has completed [COMP](subject) [6741](sub_num)?
+    - List of students who have completed [COMP](subject) [6721](sub_num)?
+    - List of students who have completed [COMP](subject) [6741](sub_num)?
+
+- intent: print_transcript
+  examples: |
+    - Print a transcript for a [Nandini](fname) [Bibra](lname), listing all the course taken with their grades.
+    - Print a transcript for a [Jatish](fname) [Bhatia](lname), listing all the course taken with their grades.
+    - Print a transcript for a [Shruti](fname) [Bibra](lname), listing all the course taken with their grades.
+    - Print a transcript for a [__oov__](fname) [__oov__](lname), listing all the course taken with their grades.
+
+- intent: total_triples
+  examples: |
+    - Total number of triples
+    - Total number of triples
+    - Total number of triples
+    - How many triples do you have?
+    - How many triples are there?
+    - How many triples are there?
+    - How many triples are you made of?
+    - What is the total number of triples?
+    - What is the total number of triples?
+
+- intent: num_of_courses
+  examples: |
+    - Count of course URIs
+    - Count of course URIs
+    - Count of course URIs
+    - How many courses do you have?
+    - How many courses are you made of?
+    - How many courses are there?
+    - How many courses are there?
+    - What is the total number of courses?
+    - What is the total number of courses?
+
+- intent: course_number
+  examples: |
+    - What is [COMP](subject) [6741](sub_num) about ?
+    - What is [COMP](subject) [6461](sub_num) about ?
+    - What is [COMP](subject) [6721](sub_num) about ?
+    - What is [__oov__](subject) [__oov__](sub_num) about ?
+    - Tell me about [COMP](subject) [6741](sub_num) ?
+    - Tell me about [COMP](subject) [6461](sub_num) ?
+    - Tell me more about [COMP](subject) [6741](sub_num) ?
+    - Tell me more about [COMP](subject) [6461](sub_num) ?
+
+- intent: topics_course_event_course
+  examples: |
+    - Which topics are covered in [Lecture](event) [1](event_num) of [COMP](subject) [6741](sub_num)?
+    - Which topics are covered in [Lecture](event) [2](event_num) of [COMP](subject) [6741](sub_num)?
+    - Which topics are covered in [Lecture](event) [3](event_num) of [COMP](subject) [6461](sub_num)?
+    - Which topics are covered in [Lecture](event) [4](event_num) of [COMP](subject) [6461](sub_num)?
+    - Which topics are covered in [__oov__](event) [__oov__](event_num) of [__oov__](subject) [6741](sub_num)?
+    - Which topics are covered in [__oov__](event) [__oov__](event_num) of [COMP](subject) [6741](sub_num)?
+    - Which topics are covered in [Lab](event) [1](event_num) of [COMP](subject) [6741](sub_num)?
+    - Which topics are covered in [Lab](event) [2](event_num) of [COMP](subject) [6741](sub_num)?
+    - Which topics are covered in [Lab](event) [3](event_num) of [COMP](subject) [6461](sub_num)?
+    - Which topics are covered in [Lab](event) [4](event_num) of [COMP](subject) [6461](sub_num)?
+
+- intent: topics_in_course_events
+  examples: |
+    - Which course events cover [Deep Learning](topic)?
+    - Which course events cover [Artificial Intelligence](topic)?
+    - Which course events cover [__oov__](topic)?
+    - Which course events cover [ANN](topic)?
+    - Which course events cover [ARQ](topic)?
+    - Which course events cover [__oov__](topic)?
+    - Which course events cover [BitTorrent](topic)?
+    - Which course events cover [Aloha](topic)?
+    - Which course events cover [__oov__](topic)?
+
+- intent: out_of_scope
+  examples: |
+    - I want to order food
+    - What is 2 + 2?
+    - Who's the US President?
+    - Show me the menu
+    - Order pizza
+
+# - regex: uni
+#   examples: |
+#     - Concordia University
+#     - University of XYZ
+#     - ABC University
+#     - (?<=\s)[a-zA-Z\s]+(?=\sUniversity)
+    
+
+
+
+
+
+    

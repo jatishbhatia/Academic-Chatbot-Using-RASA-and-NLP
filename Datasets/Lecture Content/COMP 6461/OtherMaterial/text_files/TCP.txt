@@ -1,0 +1,58 @@
+4/12/24, 1:00 PM Transmission Control Protocol - Wikipedia
+https://en.wikipedia.org/wiki/Transmission_Control_Protocol 1/21Transmission Control
+Protocol
+Protocol stack
+AbbreviationTCP
+Developer(s)Vint Cerf and Bob
+Kahn
+Introduction1974
+Based on Transmission
+Control Program
+OSI layer Transport layer (4)
+RFC(s) RFC 9293Transmission Control Protocol
+The Transmission Control Protocol  (TCP ) is one of the main protocols  of the Internet
+protocol suite. It origin ated in the initial network implementation in which it complemented
+the Internet Protocol  (IP). Therefore, the entire suite is commonly referred to as TCP/IP .
+TCP provides reliable , ordered, and error-checked  delivery of a stream  of octets  (bytes)
+between applications running on hosts communicating via an IP network. Major internet
+applications such as the World Wide Web , email, remote administration , and file transfer
+rely on TCP, which  is part of the Transport layer  of the TCP/IP suite. SSL/TLS  often runs on
+top of TCP.
+TCP is connection-oriented , and a connection between client and server is established before
+data can be sent. The server must be listening (passive open) for conne ction requests from
+clients before a connection is established. Three-way handshake  (active open),
+retransmission , and error detection adds to reliability but lengthens latency . Applications
+that do not require  reliable data stream  service may use the User Datagram Protocol  (UDP)
+instead, which provides a connectionless  datagram  serv ice that prioritizes time over reliability. TCP employs network congestion
+avoidance . However, there are vulnerabilities in TCP, including denial of service , connection hijacking , TCP veto, and reset
+attack .
+In May 1974, Vint Cerf  and Bob Kahn  described  an internetworking  protocol for sharing resources using packet switching  among
+network nodes.[1] The authors had been working with Gérard Le Lann  to incorp orate concepts from the French CYCLADES
+project into the new network.[2] The specification  of the resulting protocol, RFC 675 (Specification of Internet Transmission
+Control Program ), was written by Vint Cerf, Yogen Dalal, and Carl Sunshin e, and published in December 1974.[3] It contains the
+first attested use of the term internet , as a shorthand for internetwork .
+A central control component of this model was the Transmission Control Program  that incorporated both connection-oriented
+links and datagram services between hosts. The monolithic Transmission Control Program was later divided into a modular
+architecture consis ting of the Transmission Control Protocol  and the Internet Protocol . This resulted in a networking model that
+became known informally as TCP/IP , although formally it was variously referred to as the Department of Defense (DOD) model,
+and ARPANET  model, and eventually also as the Internet Protocol Suite .
+In 2004, Vint Cerf  and Bob Kahn  received the Turing Award  for their foundational work on TCP/IP.[4][5]
+The Tran smission Control Protocol provides a communication service at an intermediate level between an application program
+and the Internet Protocol. It provides host-to-host connectivity at the transport layer  of the Internet model . An application does
+not need to know the particular mechanisms for sending data via a link to another host, such as the required IP fragmentation  to
+accommodate the maximum transmission unit of the transmission medium. At the transport layer, TCP handles all handshaking
+and transmission details and presen ts an abstraction of the network connection to the application typically through a network
+socket  interface.
+At the lower levels of the protocol stack, due to network congestion , traffic load bala ncing , or unpredictable network behavior,  IP
+packets may be lost, duplicated, or delivered out of order . TCP  detects thes e problems, requests re-transmission  of lost data,
+rearranges out-of-order data and even helps minimize network congestion to reduce the occurrence of the other problems. If the
+data still remains undelivered, the source is notified of this failure. Once the TCP receiver has reassembled the sequence of octets
+originally transmitted, it passes them to the receiving application. Thus, TCP abstracts  the application's communication from the
+underlying networking details.
+TCP is used exten sively by many internet applications, including the World Wide Web  (WWW) , email, File Tran sfer Prot ocol ,
+Secure Shell , peer-to-peer file sharing , and streaming media .
+TCP is optimized for accurate delivery rather than timely delivery and can incur relatively long delays (on the order of seconds)
+while waiting for out-of-order messa ges or re-transmissions of lost messages. Therefore, it is not particularly suitable for real-
+time appl ications such as voice over IP. For such applications, protocols like the Real-time Transpo rt Protocol  (RTP) operating
+over the User Datagram Protocol  (UDP) are usually recommended instead.[6]Historical origin
+Network function

@@ -1,0 +1,40 @@
+4/12/24, 1:18 PM Internet protocol suite - Wikipedia
+https://en.wikipedia.org/wiki/Internet_protocol_suite 1/16
+Diagram of the first internetworked
+connectionInternet protocol suite
+The Internet protoco l suite , commonly known as TCP/IP , is a framework for organizing the set
+of communication protocols  used  in the Internet  and similar computer network s acco rding to
+functional criteria . The foundational protocols in the suite are the Transmission Control Protocol
+(TCP), the User Datagram Protocol  (UDP), and the Internet Protocol  (IP). Early versions of this
+networking mode l were known as the Department of Defense  (DoD ) model  because the
+research and development were funded by the United States Department of Defe nse thro ugh
+DARPA .
+The Internet protocol suite provides end-to-end data communication  specifying how data should be
+packetized, addres sed, transmitted, routed , and received. This functionality is organized into four
+abstraction layers , which classify all related protocols according to each protocol's scope of
+networking.[1][2] An implementation of the layers for a particular application forms a protocol stack .
+From lowest to highest, the layers are the link layer , containi ng comm unication methods for data
+that rema ins withi n a single networ k segment (link); the internet layer , providing internetworking
+between independent networks; the transport layer , handling  host-to-host communicati on; and the
+application layer , providing process-to-process data exchange for applications.
+The technical standard s underlyi ng the Internet protocol suite and its constituent protocols are
+maintained by the Internet Engineering Task Force  (IETF). The Internet protocol suite predates the
+OSI model , a more comprehensive reference framework for general networking systems.
+Initially referred to as the DOD Internet Arch itecture Model , the
+Internet protocol suite has its roots in research and development
+sponsored by the Defense Advanced  Research Projects Agency
+(DARPA ) in the late 1960s.[3] After DARPA initiated the
+pioneering ARPANET  in 1969, Steve Crocker  established a
+"Networking Wor king Group" which developed a host-host
+protocol, the Network Control Program  (NCP).[4] In the early
+1970s, DARPA started work on several other data transmission
+technologies, including mobile packet radio, packet satellite
+service, local area networks, and other data networks in the
+public and private domains. In 1972, Bob Kahn  joined the
+DARPA Information Proce ssing Technology Office , where he worke d on both satellite packet
+networks and ground-based radio packet networks, and recognized the value of being able to
+communicate across both. In the spring of 1973, Vinton Cerf  joined Kahn with the goal of designing
+the next protocol generation for the ARPANET to enable internetworking .[5][6] They drew on the
+experience from the ARPANET research community, the International Network Working Group,
+which Cerf chaired, and researchers at Xerox PARC .[7][8][9]History
+Early research

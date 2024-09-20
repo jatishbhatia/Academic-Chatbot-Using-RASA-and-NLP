@@ -1,0 +1,161 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dce: <http://purl.org/dc/elements/1.1/> .
+@prefix vivo: <http://vivoweb.org/ontology/core/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix vcard: <https://www.w3.org/2006/vcard/ns#> .
+@prefix roboprof: <http://roboprof.ca/schema/> .
+@prefix roboprof_data: <http://roboprof.ca/data/> .
+
+#Classes
+
+roboprof:CourseEvent
+	a rdfs:Class ;
+	rdfs:label "Course Event"@en ;
+	rdfs:comment "Specifies the events in a course like lectures, labs, tutorials etc."@en .
+
+roboprof:Lecture
+	a rdfs:Class ;
+	rdfs:subClassOf roboprof:CourseEvent ;
+	rdfs:label "Lecture"@en ;
+	rdfs:comment "A single session of teaching within a course, covering specific content."@en .
+
+roboprof:Lab
+	a rdfs:Class ;
+	rdfs:subClassOf roboprof:CourseEvent ;
+	rdfs:label "Lab"@en ;
+	rdfs:comment "A single session of laboratory within a course, covering specific content."@en .
+
+roboprof:Topic
+	a rdfs:Class ;
+	rdfs:label "Topic"@en ;
+	rdfs:comment "A subject or theme covered in a course."@en .
+
+roboprof:Grade
+	a rdfs:Class ;
+	rdfs:label "Grade"@en ;
+	rdfs:comment "Refers to Grade received for a specific course."@en .
+
+roboprof:CourseContent
+    a rdfs:Class ;
+	rdfs:label "Course Content"@en ;
+	rdfs:comment "The content suggested or covered in a course."@en .
+
+roboprof:Slide
+    a rdfs:Class ;
+    rdfs:subClassOf roboprof:CourseContent ;
+	rdfs:label "Slide"@en ;
+	rdfs:comment "The powerpoint slides covered in a course."@en .
+
+roboprof:Worksheet
+    a rdfs:Class ;
+    rdfs:subClassOf roboprof:CourseContent ;
+	rdfs:label "Worksheet"@en ;
+	rdfs:comment "The worksheet covered in a course."@en .
+
+roboprof:Reading
+    a rdfs:Class ;
+    rdfs:subClassOf roboprof:CourseContent ;
+	rdfs:label "Reading"@en ;
+	rdfs:comment "The readings covered in a course."@en .
+
+roboprof:OtherMaterial
+    a rdfs:Class ;
+    rdfs:subClassOf roboprof:CourseContent ;
+	rdfs:label "Other Material"@en ;
+	rdfs:comment "Other material suggested or covered in a course."@en .
+
+roboprof:LabMaterial
+    a rdfs:Class ;
+    rdfs:subClassOf roboprof:CourseContent ;
+	rdfs:label "Lab Material"@en ;
+	rdfs:comment "Lab material suggested or covered in a course."@en .
+
+roboprof:InitialGrade
+	a rdfs:Class ;
+	rdfs:subClassOf roboprof:Grade ;
+	rdfs:label "Initial Grade"@en ;
+	rdfs:comment "Refers to Grade received for a specific course."@en .
+
+roboprof:RetakeGrade
+	a rdfs:Class ;
+	rdfs:subClassOf roboprof:Grade ;
+	rdfs:label "Retake Grade"@en ;
+	rdfs:comment "Refers to Grade received for a specific course when retaken."@en .
+
+#Properties
+
+roboprof:offersCourse
+	a rdf:Property ;
+	rdfs:domain dbo:University  ;
+	rdfs:range vivo:Course ;
+	rdfs:label "Course Offered"@en ;
+	rdfs:comment "Specifies to the courses offered by the University."@en .
+	
+roboprof:hasCourseEvent
+	a rdf:Property ;
+	rdfs:domain vivo:Course  ;
+	rdfs:range roboprof:CourseEvent  ;
+	rdfs:label "Has Course Event"@en ;
+	rdfs:comment "Specifies to the events that are part of a course."@en .
+
+roboprof:courseOutline
+	a rdf:Property ;
+	rdfs:domain roboprof:Lecture ;
+	rdfs:range dbo:Document ;
+	rdfs:label "Course Outline"@en ;
+	rdfs:comment "Refers to a document containing the course outline."@en .
+
+roboprof:coversCourseContent
+	a rdf:Property ;
+	rdfs:domain roboprof:CourseEvent ;
+	rdfs:range roboprof:CourseContent ;
+	rdfs:label "Covers Course Content"@en ;
+    rdfs:comment "Specifies the content covered in the course."@en .
+
+roboprof:provenanceInfo
+	a rdf:Property ;
+	rdfs:domain roboprof:Topic ;
+	rdfs:range roboprof:CourseContent ;
+	rdfs:label "Provenance Information"@en ;
+	rdfs:comment "Records where the topic was identified as being covered in the course (e.g., the calendar, the course outline or a specific lecture)"@en .
+
+roboprof:studiesAt
+	a rdf:Property ;
+	rdfs:domain vivo:Student ;
+	rdfs:range dbo:University ;
+	rdfs:label "Studies At"@en ;
+	rdfs:comment "Specifies the university where the student studies."@en .
+
+roboprof:completedCourse
+	a rdf:Property ;
+	rdfs:domain vivo:Student ;
+	rdfs:range vivo:Course ;
+	rdfs:label "Course Compeleted"@en ;
+	rdfs:comment "Specifies the courses completed by a student."@en .
+
+roboprof:achievedGrade
+	a rdf:Property ;
+	rdfs:domain vivo:Student ;
+	rdfs:range roboprof:Grade ;
+	rdfs:label "Grade Achieved"@en ;
+	rdfs:comment "Specifies the grade achieved by a student."@en .
+
+roboprof:gradeInCourse
+	a rdf:Property ;
+	rdfs:domain roboprof:Grade ;
+	rdfs:range vivo:Course ;
+	rdfs:label "Grade in Course"@en ;
+	rdfs:comment "Specifies the grade that can be achieved in a particular course."@en .
+
+roboprof:gradeValue
+	a rdf:Property ;
+	rdfs:domain roboprof:Grade ;
+	rdfs:range xsd:string ;
+	rdfs:label "Value of the Grade"@en ;
+	rdfs:comment "Specifies the letter grade."@en .

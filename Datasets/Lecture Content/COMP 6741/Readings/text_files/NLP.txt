@@ -1,0 +1,50 @@
+4/12/24, 12:47 PM Natural language processing - Wikipedia
+https://en.wikipedia.org/wiki/Natural_language_processing 1/10Natural language processing
+Natural language processing  (NLP ) is an interdisciplinary  subf ield of computer science  and information retrieval . It is
+primarily concerned with giving computers the ability to support and manipulate human language. It involves processing
+natural language  datasets, such as text corpora  or speech corpora, using either rule-based or probabilistic (i.e. statistical
+and, most recently, neural network-based) machine learning  approaches. The goal is a computer capable of
+"understanding"  the contents of documents, including the contextual  nuances of the language within them. To this end,
+natural language processing often borrows ideas from theoretical linguistics . The technology can then accuratel y extract
+information and insights contained in the documents as well as categorize and organize the documents themselves.
+Challenges in natural language processing frequently involve speech recognition , natural-language understanding , and
+natural-language generation .
+Natural language processing has its roots in the 1940s.[1] Alre ady in 1940 , Alan Turing  published an article titled
+"Computing Machinery and Intellige nce" which proposed what is now called  the Turing test as a crite rion of intelligence,
+though at the time  that was not articulated as a problem separate from artificial intelligence. The proposed test includes a
+task that involves the automated interpretation and generation of natural language.
+The prem ise of symbolic NLP is well-summarized by John Searle's Chinese room  experime nt: Give n a collection of rules
+(e.g., a Chinese phrasebook, with questions and matching answers), the computer emulates natural language understanding
+(or other NLP tasks) by applying those rules to the data it confronts.
+1950s : The Georgetown experiment  in 1954 involved fully automatic translation  of more than sixty Russian sentences
+into English. The authors claimed that within three or five years, machine translation would be a solved problem.[2]
+However , real progress was much slower , and after the ALPAC report  in 1966, which found that ten-year-long research
+had failed to fulfill the expectations, funding for machine translation was dramatically reduced. Little further research in
+machine translation was conducted in America (though some research continued elsewhere, such as Japan and
+Europe[3]) until the late 1980s when the first statistical machine translation  systems were developed.
+1960s : Some notably successful natural language processing systems developed in the 1960s were SHRDLU , a
+natural language system working in restricted " blocks worlds " with restricted vocabularies, and ELIZA , a simulation of a
+Rogerian psychotherapist , written by Joseph W eizenbaum  between 1964 and 1966. Using almost no information about
+human thought or emotion, ELIZA  sometimes provided a startlingly human-like interaction. When the "patient" exceeded
+the very small knowledge base, ELIZA  might provide a generic response, for example, responding to "My head hurts"
+with "Why do you say your head hurts?". Ross Quillian 's successful work on natural language was demonstrated with a
+vocabulary of only twenty  words, because that was all that would fit in a computer memory at the time.[4]
+1970s : During the 1970s, many programmers began to write "conceptual ontologies ", which structured real-world
+information into computer-understandable data. Examples are MARGIE (Schank, 1975), SAM (Cullingford, 1978), P AM
+(Wilensky , 1978), TaleSpin (Meehan, 1976), QUALM (Lehnert, 1977), Politics (Carbonell, 1979), and Plot Units (Lehnert
+1981). During this time, the first chatterbots  were written (e.g., PARR Y).
+1980s : The 1980s and early 1990s mark the heyday of symbolic methods in NLP . Focus areas of the time included
+research on rule-based parsing (e.g., the development of HPSG  as a computational operationalization of generative
+grammar ), morphology (e.g., two-level morphology[5]), semantics (e.g., Lesk algorithm ), reference (e.g., within
+Centering Theory[6]) and other areas of natural language understanding (e.g., in the Rhetorical Structure Theory ). Other
+lines of research were continued, e.g., the development of chatterbots with Racter  and Jabberwacky . An important
+development (that eventually led to the statistical turn in the 1990s) was the rising importance of quantitative evaluation
+in this period.[7]
+Up until the 1980s, most natural language processing systems were based on complex sets of hand-written rules. Starting in
+the late 1980s, however, there was a revolution in natural language processing with the introduction of machine learning
+algorithms for language processing. This was due to both the steady incre ase in computational power (see Moore's law) and
+the gradual lessening of the domin ance of Chomskyan  theo ries of linguistics (e.g. transformational grammar ), whose
+theoretical underp innings discouraged the sort of corpus linguistics  that underlies the machine-learning approach to
+language processing.[8]History
+Symbolic NLP (1950s – early 1990s)
+Statistical NLP (1990s–2010s)

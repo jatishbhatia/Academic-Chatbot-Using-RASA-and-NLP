@@ -1,0 +1,300 @@
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX db: <http://dbpedia.org/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX roboprof: <http://roboprof.ca/schema/>
+PREFIX roboprof_data: <http://roboprof.ca/data/>
+PREFIX vivo: <http://vivoweb.org/ontology/core/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX ro: <http://purl.org/wf4ever/ro#>
+
+1. List all courses offered by [university]
+SELECT ("Concordia University" AS ?University) ?Course_Name ?Course_URI
+WHERE {
+	?uni dbo:name "Concordia University" .
+	?uni roboprof:offersCourse ?Course_URI .
+	?Course_URI dbo:name ?Course_Name .
+}
+
+2. In which courses is [topic] discussed?
+SELECT DISTINCT ?Course_URI ?Course_Name ("Deep Learning" AS ?Topic_Name)
+WHERE {
+    ?Topic_URI dbo:name "Deep Learning" .
+    ?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+    ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+    ?Course_URI roboprof:hasCourseEvent ?CourseEvent_URI .
+    ?Course_URI dbo:name ?Course_Name .
+}
+
+3. Which [topics] are covered in [course] during [lecture number]?
+SELECT ?Topic_URI ?Topic_Name ("Intelligent Systems" AS ?Course_Name) (STR(4) AS ?Lecture_Number)
+WHERE {
+	?course dbo:name "Intelligent Systems" .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI rdf:type ?CourseEvent_Type .
+	?CourseEvent_Type rdfs:label "Lecture"@en .
+	?CourseEvent_URI dbo:number 4 .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+	?Topic_URI dbo:name ?Topic_Name .
+}
+
+4. List all [courses] offered by [university] within the [subject] (e.g., \COMP", \SOEN").
+SELECT ?Course_URI ?Course_Name ("Concordia University" AS ?University_Name) ("COMP" AS ?Subject)
+WHERE {
+	?uni dbo:name "Concordia University" .
+  	?Course_URI dbo:name ?Course_Name .
+	?uni roboprof:offersCourse ?Course_URI .
+	?Course_URI vivo:hasSubjectArea "COMP" .
+}
+
+5. What [materials] (slides, readings) are recommended for [topic] in [course] [number]?
+SELECT DISTINCT ?Course_Name (CONCAT("COMP", " ", STR(6461)) AS ?Course_Number) ("Aloha" AS ?Topic_Name) ?Course_Content_URI ?Material_Type ?Material_Name
+WHERE {
+	?course dbo:number 6461 .
+  	?course vivo:hasSubjectArea "COMP" .
+  	?course dbo:name ?Course_Name .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?Topic_URI dbo:name "Aloha" .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?Course_Content_URI rdf:type ?Course_Content_Type .
+	?Course_Content_URI dbo:name ?Material_Name .
+  	?Course_Content_Type rdfs:label ?Material_Type .
+}
+
+6. How many credits is [course] [number] worth?
+SELECT ?Course_Name (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number) ?Credits
+WHERE {
+	?course dbo:number 6741 .
+  	?course vivo:hasSubjectArea "COMP" .
+	?course dbo:name ?Course_Name .
+	?course vivo:courseCredits ?Credits .
+}
+
+7. For [course] [number], what additional resources (links to web pages) are available?
+SELECT ?Course_Name (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number) ?Resource
+WHERE {
+	?course dbo:number 6741 .
+  	?course vivo:hasSubjectArea "COMP" .
+  	?course dbo:name ?Course_Name .
+	?course rdfs:seeAlso ?Resource .
+}
+
+8. Detail the content (slides, worksheets, readings) available for [lecture number] in [course] [number].
+SELECT ?Course_Name (CONCAT("COMP", " ", STR(6461)) AS ?Course_Number) (STR(3) AS ?Lecture_Number) ?Course_Content_URI ?Course_Content_Type_Label ?Course_Content_Name
+WHERE {
+  	?course dbo:number 6461 .
+  	?course vivo:hasSubjectArea "COMP" .
+  	?course dbo:name ?Course_Name .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI rdf:type ?CourseEvent_Type .
+	?CourseEvent_Type rdfs:label "Lecture"@en .
+	?CourseEvent_URI dbo:number 3 .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+    ?Course_Content_URI rdf:type ?Course_Content_Type .
+    ?Course_Content_URI dbo:name ?Course_Content_Name .
+	?Course_Content_Type rdfs:label ?Course_Content_Type_Label .
+}
+
+9. What reading materials are recommended for studying [topic] in [course]?
+SELECT DISTINCT ("Computer Networks and Protocols" AS ?Course_Name) ("ARQ" AS ?Topic_Name) ?Course_Content_URI ?Course_Content_Type_Label ?Course_Content_Name
+WHERE {
+    ?course dbo:name "Computer Networks and Protocols" .
+    ?course roboprof:hasCourseEvent ?CourseEvent_URI .
+    ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+    ?Course_Content_URI rdf:type roboprof:Reading .
+	?Topic_URI dbo:name "ARQ" .
+	?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+	?Course_Content_URI rdf:type ?Course_Content_Type .
+	?Course_Content_URI dbo:name ?Course_Content_Name .
+	?Course_Content_Type rdfs:label ?Course_Content_Type_Label .
+}
+
+10. What competencies [topics] does a student gain after completing [course] [number]?
+SELECT DISTINCT ?Course_Name (CONCAT("COMP", " ", STR(6461)) AS ?Course_Number) ?Topic_Name ?Topic_URI
+WHERE {
+	?course dbo:number 6461 .
+	?course vivo:hasSubjectArea "COMP" .
+	?course dbo:name ?Course_Name .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+	?Topic_URI dbo:name ?Topic_Name .
+}
+
+11. What grades did [student] achieve in [course] [number]?
+SELECT (CONCAT("Jatish", " ", "Bhatia") AS ?Name) ?Course_Name (CONCAT("COMP", " ", STR(6521)) AS ?Course_Number) ?Grade ?Grade_URI
+WHERE {
+  	?student foaf:firstName "Jatish" .
+  	?student foaf:lastName "Bhatia" .
+	?student roboprof:achievedGrade ?Grade_URI .
+	?course dbo:number 6521 .
+	?course vivo:hasSubjectArea "COMP" .
+  	?course dbo:name ?Course_Name .
+	?Grade_URI roboprof:gradeInCourse ?course .
+	?Grade_URI roboprof:gradeValue ?Grade .
+}
+
+12. Which [students] have completed [course] [number]?
+SELECT DISTINCT (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number) (CONCAT(?first_name, " ", ?last_name) AS ?Student_Name) ?Student_URI
+WHERE {
+	?course dbo:number 6741 .
+    ?course vivo:hasSubjectArea "COMP" .
+	?Student_URI roboprof:completedCourse ?course .
+	?Student_URI foaf:firstName ?first_name .
+  	?Student_URI foaf:lastName ?last_name .
+}
+
+13. Print a transcript for a [student], listing all the course taken with their grades.
+SELECT (CONCAT("Jatish", " ", "Bhatia") AS ?Student) ?Course_Name ?Course_URI ?Grade ?Grade_URI ?Retake_Grade ?Retake_Grade_URI
+WHERE {
+	?student foaf:firstName "Jatish" .
+	?student foaf:lastName "Bhatia" .
+	?student roboprof:completedCourse ?Course_URI .
+	?Course_URI dbo:name ?Course_Name .
+	?student roboprof:achievedGrade ?Grade_URI .
+	?Grade_URI rdf:type roboprof:InitialGrade .
+	?Grade_URI roboprof:gradeInCourse ?Course_URI .
+	?Grade_URI roboprof:gradeValue ?Grade .
+	OPTIONAL { ?student roboprof:achievedGrade ?Retake_Grade_URI .
+	           ?Retake_Grade_URI rdf:type roboprof:RetakeGrade .
+	           ?Retake_Grade_URI roboprof:gradeInCourse ?Course_URI .
+	           ?Retake_Grade_URI roboprof:gradeValue ?Retake_Grade .     }
+}
+
+14. Total number of triples
+SELECT (COUNT(?s) AS ?Total_Number_of_Triples)
+WHERE {
+	?s ?p ?o .
+}
+
+15. Count of course URIs
+SELECT (COUNT(?courses) AS ?Course_Count)
+WHERE {
+   ?courses rdf:type vivo:Course .
+}
+############################
+PART 2
+############################
+16. What is [course] [number] about?
+SELECT ?Course_Name (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number) ?Course_Description
+WHERE {
+	?course dbo:number 6741 .
+	?course vivo:hasSubjectArea "COMP" .
+	?course dbo:name ?Course_Name .
+	?course dcterms:description ?Course_Description .
+}
+
+17. Which topics are covered in [course event] of [course] [number]?
+SELECT ?Topic_URI ?Topic_Name (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number) (CONCAT("Lecture", " ", STR(4)) AS ?CourseEvent)
+WHERE {
+	?course dbo:number 6741 .
+	?course vivo:hasSubjectArea "COMP" .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI rdf:type ?CourseEvent_Type .
+	?CourseEvent_Type rdfs:label "Lecture"@en .
+	?CourseEvent_URI dbo:number 4 .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+	?Topic_URI dbo:name ?Topic_Name .
+}
+
+18. Which course events cover [topic]?
+SELECT DISTINCT ("Aloha" AS ?Topic_Name) (COUNT(?Topic_URI) AS ?Frequency) ?Course_Name ?Course_URI (CONCAT(?CourseEvent_Type_Label, " ", STR(?CourseEvent_Num)) AS ?Course_Event) ?CourseEvent_URI ?CourseEvent_Type
+WHERE {
+    ?Topic_URI dbo:name "Aloha" .
+    ?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+    ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?CourseEvent_URI rdf:type ?CourseEvent_Type .
+    ?CourseEvent_Type rdfs:label ?CourseEvent_Type_Label .
+  	?CourseEvent_URI dbo:number ?CourseEvent_Num .
+    ?Course_URI roboprof:hasCourseEvent ?CourseEvent_URI .
+    ?Course_URI dbo:name ?Course_Name .
+}
+GROUP BY ?Topic_Name ?Frequency ?Course_Name ?Course_URI ?CourseEvent_Type_Label ?CourseEvent_URI ?CourseEvent_Type ?CourseEvent_Num
+ORDER BY DESC(?Frequency)
+
+###################################
+ONLY SPARQL(Not chatbot answerable)
+###################################
+
+19. For a course c, list all covered topics t, printing out their English labels and their DBpedia/Wikidata
+URI, together with the course event URI (e.g., 'lab3') and resource URI (e.g., 'slides10') where they
+appeared. Filter out duplicates.
+SELECT DISTINCT ?Topic_Name ?Topic_URI ?CourseEvent_URI ?Course_Content_URI (CONCAT("COMP", " ", STR(6741)) AS ?Course_Number)
+WHERE {
+	?course dbo:number 6741 .
+	?course vivo:hasSubjectArea "COMP" .
+	?course roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+	?Topic_URI dbo:name ?Topic_Name .
+}
+
+20. For a given topic t (DBpedia or Wikidata URI), list all courses c and their events e where the given
+topic t appears, along with the count of occurrences, with the results sorted by this count in descending
+order.
+SELECT ?Topic_URI (COUNT(?Topic_URI) AS ?Occurence) ?Course_Name ?Course_URI (CONCAT(?CourseEvent_Type_Label, " ", STR(?CourseEvent_Num)) AS ?Course_Event) ?CourseEvent_URI
+WHERE {
+    BIND(<http://dbpedia.org/resource/ALOHAnet> AS ?Topic_URI) .
+    ?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+    ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+	?CourseEvent_URI rdf:type ?CourseEvent_Type .
+    ?CourseEvent_Type rdfs:label ?CourseEvent_Type_Label .
+  	?CourseEvent_URI dbo:number ?CourseEvent_Num .
+    ?Course_URI roboprof:hasCourseEvent ?CourseEvent_URI .
+    ?Course_URI dbo:name ?Course_Name .
+}
+GROUP BY ?Topic_URI ?Course_Name ?Course_URI ?Course_Event ?CourseEvent_URI ?CourseEvent_Type_Label ?CourseEvent_Num
+ORDER BY DESC(?Occurence)
+
+21. For a given topic t, list the precise course URI, course event URI and corresponding resource URI
+where the topic is covered (e.g., \NLP" is covered in COMP474 ! Lecture 10! Lab 10 Notes).
+SELECT ?Course_URI ?CourseEvent_URI ?Course_Content_URI
+WHERE {
+    ?Topic_URI dbo:name "Deep Learning" .
+    ?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+    ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+    ?Course_URI roboprof:hasCourseEvent ?CourseEvent_URI .
+}
+
+22. Write a SPARQL query to identify any course events or resources within a specific course c that do not
+have any associated topic entities. This query helps in verifying that all relevant educational materials
+have been adequately linked to topics in the knowledge base, ensuring completeness and providing
+insights into potential areas for improvement.
+SELECT DISTINCT ?Course_Content_URI
+WHERE {
+    ?Course_URI dbo:name "Intelligent Systems" .
+    ?Course_URI roboprof:hasCourseEvent ?CourseEvent_URI .
+	?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+    FILTER NOT EXISTS {
+        ?Topic_URI roboprof:provenanceInfo ?Course_Content_URI .
+    }
+}
+
+#########################
+Statistics
+########################
+Total distinct topics and Topic instances per course
+SELECT ?Topics
+WHERE {
+   ?Topics rdf:type roboprof:Topic .
+}
+SELECT ?Topics
+WHERE {
+   ?Topics rdf:type roboprof:Topic .
+   ?Topics roboprof:provenanceInfo ?Course_Content_URI .
+   ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+   ?course roboprof:hasCourseEvent ?CourseEvent_URI .
+   ?course dbo:name "Intelligent Systems" .
+}
+SELECT ?Topics
+WHERE {
+   ?Topics rdf:type roboprof:Topic .
+   ?Topics roboprof:provenanceInfo ?Course_Content_URI .
+   ?CourseEvent_URI roboprof:coversCourseContent ?Course_Content_URI .
+   ?course roboprof:hasCourseEvent ?CourseEvent_URI .
+   ?course dbo:name "Computer Networks and Protocols" .
+}

@@ -1,0 +1,435 @@
+Data Communication and Computer Networks5. Transport LayerPART-BDr. Aiman Hanna Department of Computer Science & Software Engineering Concordia University, Montreal, CanadaThese slides have mainly been extracted, modified and updated from original slides of :Computer Networking: A Top Down Approach,  6th edition  Jim Kurose, Keith RossAddison-Wesley, 2013Additional  materials have been extracted, modified and updated from:  Understanding Communications and Networking, 3e by William A. Shay 2005 Copyright © 1996-2013 J.F Kurose and K.W. Ross Copyright © 2005 William A. ShayCopyright © 2023 Aiman Hanna All rights reserved 
+Transport Layer B
+3-2
+rdt3.0: channels with errors and loss
+Previous versions assumed no-loss channelsPackets may have errors, but they will always arrivenew realistic assumption: underlying channel can also lose packets (data, ACKs)checksum, seq. #, ACKs, retransmissions will be of help … but not enough
+approach: sender waits “reasonable” amount of time for ACK retransmits if no ACK received in this timeif pkt (or ACK) just delayed (not lost):retransmission will be  duplicate, but seq. #’s already handles thisreceiver must specify seq # of pkt being ACKedrequires countdown timer
+3-3
+rdt3.0 sender
+sndpkt = make_pkt(0, data, checksum)udt_send(sndpkt)start_timer
+rdt_send(data)
+
+
+
+
+rdt_rcv(rcvpkt) &&  ( corrupt(rcvpkt) ||isACK(rcvpkt,1) )
+
+
+
+
+sndpkt = make_pkt(1, data, checksum)udt_send(sndpkt)start_timer
+rdt_send(data)
+
+rdt_rcv(rcvpkt)   && notcorrupt(rcvpkt) && isACK(rcvpkt,0) 
+
+rdt_rcv(rcvpkt) &&  ( corrupt(rcvpkt) ||isACK(rcvpkt,0) )
+
+rdt_rcv(rcvpkt)   && notcorrupt(rcvpkt) && isACK(rcvpkt,1) 
+
+stop_timer
+stop_timer
+
+udt_send(sndpkt)start_timer
+timeout
+
+
+
+udt_send(sndpkt)start_timer
+timeout
+
+
+rdt_rcv(rcvpkt)
+
+
+L
+rdt_rcv(rcvpkt)
+
+L
+L
+L
+Transport Layer B
+3-4
+
+
+
+
+rdt_rcv(rcvpkt) && notcorrupt(rcvpkt)   && has_seq0(rcvpkt) 
+
+extract(rcvpkt,data)deliver_data(data)sndpkt = make_pkt(ACK, 0, chksum)udt_send(sndpkt)
+
+rdt3.0: receiver
+rdt 3.0 receiving side
+Transport Layer B
+3-5
+sender
+receiver
+rcv pkt1
+rcv pkt0
+send ack0
+send ack1
+send ack0
+rcv ack0
+send pkt0
+send pkt1
+rcv ack1
+send pkt0
+rcv pkt0
+(a) no loss
+sender
+receiver
+rcv pkt1
+rcv pkt0
+send ack0
+send ack1
+send ack0
+rcv ack0
+send pkt0
+send pkt1
+rcv ack1
+send pkt0
+rcv pkt0
+(b) packet loss
+rdt3.0 in action
+Transport Layer B
+3-6
+rdt3.0 in action
+rcv pkt1
+send ack1
+(detect duplicate)
+sender
+receiver
+rcv pkt1
+rcv pkt0
+send ack0
+send ack1
+send ack0
+rcv ack0
+send pkt0
+send pkt1
+rcv ack1
+send pkt0
+rcv pkt0
+(c) ACK loss
+rcv pkt1
+send ack1
+(detect duplicate)
+sender
+receiver
+rcv pkt1
+send ack0
+rcv ack0
+send pkt1
+send pkt0
+rcv pkt0
+(d) premature timeout/ delayed ACK
+
+Transport Layer B
+3-7
+Performance of rdt3.0
+since sequence # alternates between 1 & 0, such protocols are known as Alternating-bit protocols rdt3.0 is correct, but performance stinkse.g.: 1 Gbps link, 15 ms prop. delay, 8000 bit packet:
+U sender: utilization – fraction of time sender busy sending
+if RTT=30 msec, 8000 bit pkt every 0.030008 sec,  throughput over 1 Gbps link is only: 266.6 kbpsnetwork protocol limits use of physical resources!
+Transport Layer B
+3-8
+rdt3.0: stop-and-wait operation
+
+
+
+sender
+receiver
+
+
+
+
+
+
+
+RTT 
+
+
+last packet bit transmitted, t = L / R
+
+first packet bit arrives
+
+last packet bit arrives, send ACK
+ACK arrives, send next packet, t = RTT + L / R
+
+
+
+first bit of first packet transmitted, t = 0
+Transport Layer B
+3-9
+Stop-and-Wait Protocols
+Note:  This is stop-and-wait in general; it is not related to rtd3.0Sender sends one frame, then waits for an acknowledgment (ACK) from the receiver If the frame is damaged, this will also be indicated in the ACK
+Stop-and-Wait Flow Control
+Transport Layer B
+3-10
+Stop-and-Wait
+Analysis of stop-and-waitNotice that this is a general analysis of stop-and wait, and has nothing to do with rdt3.0 in particular. What if frame is lost?What if ACK is lost?What if ACK is received but it is damaged?What about efficiency;  Is the protocol too slow and is there a lot of waiting at both sides? What is good about that protocol? 
+Transport Layer B
+3-11
+Pipelined protocols
+pipelining: sender allows multiple, “in-flight”, yet-to-be-acknowledged pktsrange of sequence numbers must be increasedbuffering at sender and/or receiver
+two generic forms of pipelined protocols: Go-Back-N, Selective Repeat
+
+Transport Layer B
+3-12
+Pipelining: increased utilization
+
+
+
+sender
+receiver
+
+
+
+
+
+RTT 
+
+
+last bit transmitted, t = L / R
+
+first packet bit arrives
+
+last packet bit arrives, send ACK
+ACK arrives, send next packet, t = RTT + L / R
+
+
+
+
+
+last bit of 2nd packet arrives, send ACK
+
+
+last bit of 3rd packet arrives, send ACK
+3-packet pipelining increases utilization by a factor of 3!
+
+first packet bit transmitted, t = 0
+Transport Layer B
+3-13
+Another look at Protocol Efficiency 
+Protocol Efficiency There are different ways to measure efficiency  One measure to efficiency is the Effective Data Rate Effective data rate is number of transferred bits per unit of timeIt can be calculated as:Number of sent data bits /  Elapsed time between sending of two consecutive frames 
+Transport Layer B
+3-14
+Another look at Protocol Efficiency 
+Protocol Efficiency Assume: 	R: bit rate (bps)	S: signal speed (meters/µsec) 	D: distance between sender and receiver (meters)	T: time to create a frame	F: frame bits (# of bits per frame including header)	N: data bits (# of data bits per frame) 	A: number of bits in an ACK frame		
+Transport Layer B
+3-15
+Another look at Protocol Efficiency 
+Time Required to Send a Frame to Receiver 
+Transport Layer B
+3-16
+Another look at Protocol Efficiency 
+Protocol Efficiency For the unrestricted protocol, elapsed time between sending consecutive frames is: 		  time = T + F/R EDR = N/(T + F/R)For the stop-and-wait protocol, it is:		time to send a frame + time to get ACK back		 time = (T + F/R + D/S) + (T + A/R + D/S)Note: the time needed to create an ACK frame may actually differ from the time needed to create a full frame. We assume that the two are the same just for simplicity EDR = N/[2(T + D/S) + (F + A)/R]
+Transport Layer B
+3-17
+Another look at Protocol Efficiency 
+Protocol Efficiency Example: Assume: R = 10 Mbps (10 bits /µsec) S = 200 meters/µsecD = 200 meters T = 1 µsecF = 200 bitsN = 160 bitsA = 40 bits for the unrestricted protocol: EDR = N/(T + F/R) ≈ 7.6 Mbpsfor the stop-and-wait protocol, 	 EDR = N/[2(T + D/S) + (F + A)/R] ≈ 5.7 Mbps
+Transport Layer B
+Transport Layer B
+3-18
+Protocol Efficiency 
+the unrestricted protocol and the stop-and-wait protocol are two extremes in practice, we may need some other protocol that falls in between these extremes Sliding Window protocols provide such alternative two major implementation of sliding window protocols are:Go-back-n Selective Repeat 
+3-19
+Pipelined protocols: overview
+Go-back-N:sender can have up to N unacked packets in pipelinereceiver only sends cumulative ackdoesn’t ack packet if there’s a gapsender has timer for oldest unacked packetwhen timer expires, retransmit all unacked packets
+Selective Repeat:sender can have up to N unack’ed packets in pipelinercvr sends individual ack for each packetsender maintains timer for each unacked packetwhen timer expires, retransmit only that unacked packet
+Also referred to as Sliding Windows protocols
+Transport Layer B
+3-20
+Sliding Window 
+sliding window protocol numbers the frames to be sent and defines a window of these frames  
+A Sliding Window Protocol 
+Transport Layer B
+3-21
+Go-Back-N Protocol 
+Go-back-n requires frames to be received in the same order they are sent the receiver hence rejects all out-of-order frames; in other words, it rejects all frames but the next expected one in reality, communication can be full-duplex, so data is sent in both directions instead of sending separate ACK frames, ACKs can be sent along with datathis is called piggybacking 
+Typical Frame Format 
+Transport Layer B
+3-22
+Go-Back-N Protocol 
+details of Go-back-n:if the Number field in the frame has k bits, then frames can be numbered from 0  2k - 1 if there is more than 2k frames, then frame numbers are duplicated.For example, if k=3, then frames will be 0, 1, …, 6, 7, 0, 1, …receiver expects frames in order. Any out-of-order frames are rejected and a NAK is sent for the expected frame if the expected frame is received but damaged, then it is discarded and a NAK is sentnot every frame is explicitly ACKedFor example, if sender sends frames 35, 36, 37, 38 & 39, ACKs for 36 & 39  may be sent. ACK for 36 implicitly indicates that 35 & 36 were accepted. ACK for 39 implicitly indicate that 37, 38 & 39 were accepted 
+Transport Layer B
+3-23
+Go-Back-N Protocol 
+details of Go-back-n (continue…):piggybacking is used whenever possible, however frames must be ACKed within a specific time periodan ACK timer is defined at the receiver; if this timer reaches its limit, the frame must be ACKed even without piggybacking if the sender does not receive an ACK within a time period (a frame timer is used here), it assumes that something has gone wrong and so it resends every packet in its window 	in other words, the sender goes back to the beginning of the window (n) and resends all frames in the window; that is the reason behind the name: go-back-n
+Transport Layer B
+3-24
+GBN in action
+send  pkt0send  pkt1send  pkt2send  pkt3(wait)
+sender
+receiver
+
+receive pkt0, send ack0receive pkt1, send ack1 receive pkt3, discard,            (re)send ack1
+rcv ack0, send pkt4rcv ack1, send pkt5
+pkt 2 timeout
+send  pkt2send  pkt3send  pkt4send  pkt5
+
+
+
+
+
+X
+loss
+
+
+
+
+
+
+
+
+receive pkt4, discard,            (re)send ack1
+receive pkt5, discard,            (re)send ack1
+rcv pkt2, deliver, send ack2rcv pkt3, deliver, send ack3rcv pkt4, deliver, send ack4rcv pkt5, deliver, send ack5
+ignore duplicate ACK
+sender window (N=4)
+
+0 1 2 3 4 5 6 7 8 
+
+
+
+
+
+
+Transport Layer B
+3-25
+Go-Back-N Protocol 
+what is the maximum window size? 
+Protocol Failure when Window Size = 2k  
+Transport Layer B
+3-26
+Go-Back-N Protocol 
+what is the maximum window size? 
+Protocol Success when Window Size = 2k -1
+Transport Layer B
+3-27
+Selective repeat
+Go-back-n works well only under certain conditions (what are these?)once these conditions change, the protocol becomes less efficient selective repeat provides an alternative with selective repeat, the receiver is required to accept (buffers) frames even they are out of orderall frames must however be reordered before being delivered 
+Transport Layer B
+3-28
+Selective repeat
+Details of Selective Repeat:Selective repeat is similar to go-back-n in the following:Uses the same frame formatAll frames are numbered using k-bit field Sender has a window that defines the maximum number of outstanding frames ACKs are piggybacked whenever possibleNot all frames are explicitly ACKedUses NACKs (or duplicate ACKs if protocol is NAK-free) for damaged and out-of-order framesThere is an ACK timer that is used to force the sending of an ACK frame if piggybacked is not possible 	The similarities end here!  
+Transport Layer B
+3-29
+Selective repeat
+Details of Selective Repeat (continue…):
+Sending & Receiving Windows for Selective Repeat Protocol
+Transport Layer B
+3-30
+Selective repeat
+details of Selective Repeat (continue…): out-of-order frames are buffered until all the ones that precede them arriveonce a receiver detects out-of-order arrival, it sends NAK for the expected frame if the sender receive NAK, it resends only that frameonce all consecutive frames arrive, they are delivered and the receiving window is advancedif a frame timer expires, only that frame is resentpiggybacking may not ACK the last received frame; rather it ACKs the highest one delivered to the user
+Transport Layer B
+3-31
+Selective repeat in action
+send  pkt0send  pkt1send  pkt2send  pkt3(wait)
+sender
+receiver
+
+receive pkt0, send ack0receive pkt1, send ack1 receive pkt3, buffer,            send ack3
+rcv ack0, send pkt4rcv ack1, send pkt5
+pkt 2 timeout
+send  pkt2
+
+
+
+
+
+X
+loss
+
+
+
+
+
+receive pkt4, buffer,            send ack4
+receive pkt5, buffer,            send ack5
+rcv pkt2; deliver pkt2,pkt3, pkt4, pkt5; send ack2
+record ack3 arrived
+sender window (N=4)
+
+
+0 1 2 3 4 5 6 7 8 
+
+
+record ack4 arrived
+record ack4 arrived
+
+Q: what happens when ack2 arrives?
+Notice that this is a different variation of Selective Repeat , where each packet is explicitly  ACKed?
+Transport Layer B
+3-32
+Selective repeat
+what is the maximum window size?  constraint: window size must be <= ½ of 2k; which is <= 2k-1 
+Protocol Failure: Receiving Window size is > 2K-1
+Transport Layer B
+3-33
+Selective repeat
+what is the maximum window size?  constraint: window size must be <= ½ of 2k; which is <= 2k-1 
+Protocol Failure: Sending Window size is > 2K-1
+Transport Layer B
+3-34
+Selective repeat:dilemma
+example: seq #’s: 0, 1, 2, 3window size=3
+receiver window(after receipt)
+sender window(after receipt)
+
+
+receiver can’t see sender side.receiver behavior identical in both cases!something’s (very) wrong!
+receiver sees no difference in two scenarios!duplicate data accepted as new in (b)Q: what relationship between seq # size and window size to avoid problem in (b)?
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-35
+unrestricted and stop-and-wait efficiency were affected by many factors such as distance, raw bit rate, …etc.here also, there are many factors that can affect the efficiency of a sliding window protocol; for example, the timer value to trigger resent, the number of frames carrying piggybacking ACKs, …etc. for simplicity, assume that there are no errors, and that there is enough data sent back so piggybacking is always used  
+Transport Layer B
+3-36
+Assume: 	R: bit rate (bps)	S: signal speed (meters/µsec) 	D: distance between sender and receiver (meters)	T: time to create a frame	F: frame bits (# of bits per frame including header)	N: data bits (# of data bits per frame) 	A: number of bits in an ACK frame	W: window size
+Efficiency of Sliding Window Protocols
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-37
+now, there are two possibilities:Case 1) sender window never reaches its maximum sizethis is the case when ACKs come back fast enough so the sender just advances its window and sends againthis case then resembles the unrestricted protocol Case 2) the sender sends all frames in its window before getting any ACK backthis is the case when the sender W frames at a time and then waits for an ACKthis then resembles stop-and-wait, but with window size W instead of 1	the two cases can then be compared by looking at the time needed to send W frames 
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-38
+to construct and send 1 frame, we need T + F/R to construct and send W frames, we need W( T + F/R) to construct and send ACK back, we need T + A/Rsince ACKs are piggybacked, we need T + F/Rwe also need D/S for traveling time between sender and receiver  total time to send 1 frame and get ACK back is: 		2 (T + F/R +D/S) for Case 1 (resembling unrestricted protocol): 	W( T + F/R) > 2 (T + F/R +D/S)for Case 2 (resembling W-Oriented stop-and-wait): 	W( T + F/R) < 2 (T + F/R +D/S)
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-39
+ACKs Received before Sending All Windowed Frames – Case 1
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-40
+Sending All Windowed Frames and Waiting – Case 2
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-41
+what is the effective data rate then?Case 1 is actually the unrestricted protocol, hence  	 EDR = N/(T + F/R) Case 2 is actually the W-Oriented stop-and-wait, hence  	 EDR = (W * N)/[2(T + D/S) + (F + A)/R] 	here W * N replaced N in the original calculation. Why?
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-42
+Example: Assume: R = 10 Mbps (10 bits /µsec) S = 200 meters/µsecD = 200 meters T = 1 µsecF = 200 bitsN = 160 bitsA = 40 bits W = 4 frames applying these values, Case 1 condition is the one satisfied; so it is unrestricted version and the efficiency can be calculated as: EDR = N/( T + F/R) ≈ 7.6 Mbps
+Transport Layer B
+Efficiency of Sliding Window Protocols
+3-43
+Example: Assume: R = 10 Mbps (10 bits /µsec) S = 200 meters/µsecD = 5000 meters T = 1 µsecF = 200 bitsN = 160 bitsA = 40 bits W = 4 framesapplying these values, Case 2 condition is the one satisfied; soEDR = (W * N)/[2(T + D/S) + (F + F)/R] 		 = (4 * 160 bits)/[2(1 µsec + 5000 meters/ 200 meters/µsec) + 400 bits/ 10 bits /µsec] 		 = 640 bits /[2(26 µsec) + 40 µsec] 		 = 640 bits / 96 µsec		 = 6.96 Mbpsnotice that in that example all ACKs are piggybacked so F replaces A in the computation of EDR 
+Transport Layer B
+3-44
+Protocol Correctness
+does these protocols work? Will they fail in other cases that we do not know? in order to guarantee that a protocol works, formal proof is neededhowever, sometimes it is very difficult to derive formal proofs a reasonable alternative in such cases is verification two common verification tools are:Finite State Machines (FSM)Petri Net (similar to FSM in that it uses graphs to represent states and transitions, but does it in a different way)
+Transport Layer B
+3-45
+Protocol Correctness
+Finite State Machine indicates all possible states trace the different events that changes one state to another (or possibly back to the same state)   an event that causes a change of state is called state transition a State Transition Diagram (STD) can then be used to represent an algorithm 
+Transport Layer B
+3-46
+Protocol Correctness
+Finite State Machine what can you observe by looking at the following STD?
+General State Transition Diagram
+Transport Layer B
+Transport Layer B
+3-47
+Protocol Correctness
+STD for a stop-and-wait Protocol with Frame Numbers 
+Finite State Machine STD for a simplified go-back-n protocolassume: k=1, window size is 1, no time-out or retransmission and data go from sender to receiver this is like stop-and-wait protocol with frame numbers (x,y) ≡ x is the ACK number and y is the next expected frame numberfor example, (0,1) means there is an ACK for frame 0 and the next expected frame is 1

@@ -1,0 +1,50 @@
+4/12/24, 12:45 PM SPARQL - Wikipedia
+https://en.wikipedia.org/wiki/SPARQL 1/5SPARQL
+Paradigm Query language
+Developer W3C
+First appeared2008
+Stable release1.1 / 21 March
+2013
+Website www.w3.org/TR
+/sparql11-query/ (h
+ttp://www.w3.org/T
+R/sparql11-query/)
+Major implementations
+Jena,[1] OpenLink Virtuoso[1]SPARQL
+SPARQL  (pronou nced "sparkle ", a recursive acronym[2] for
+SPARQL Protocol and RDF Query Language ) is an RDF
+query language —that is, a semantic  query language  for
+databases —able to retrieve and manipulate  data stored in
+Resource Descript ion Framework (RDF)  format.[3][4] It was
+made a standard by the RDF Data Access Working Group
+(DAWG) of the World Wide Web Consortium , and is
+recognized as one of the key technologies of the semantic web.
+On 15 January 2008, SPARQL 1.0 was acknowledged by W3C
+as an official recommendation,[5][6] and SPARQL 1.1 in March,
+2013.[7]
+SPARQL allows for a query to consist of triple patterns ,
+conjunctions , disjunctions , and optional patterns .[8]
+Implementations for multiple programming languages  exist.[9]
+There exist tools that allow one to connect and semi-automatically constr uct a SPARQL query for a
+SPARQL endpoint, for example ViziQuer.[10] In addition, tools exist to translate SPARQL queries
+to other query languages, for example to SQL[11] and to XQuery .[12]
+SPARQL allows users to write querie s against what can loosely be called "key-value" data or, more
+specifically, data that follow the RDF  specifica tion of the W3C . Thus, the entire database is a set of
+"subject-predicate-object" triples. This is analogous to some NoSQL  data bases' usage of the term
+"document-key-value", such as MongoDB .
+In SQL  relational database  terms, RDF  data can also be considered a table with three columns –
+the subje ct column, the predicate column, and the object column. The subject in RDF is analogous
+to an entity in a SQL data base , where the data elements (or fields) for a given business object  are
+placed in multiple columns, sometimes spread across more than one table, and identified by a
+unique key. In RDF,  those fields are instead represented as separate predicate/object rows sharing
+the same  subject, often the same unique key, with the predicate being  analogous to the column
+name and the object the actual data. Unlike relational databases, the object column is
+heterogeneous: the per-cell data type is usually implied (or specified  in the ontology ) by the
+predicate  value. Also unlike SQL, RDF can have multiple entries per predicate; for instance, one
+could have multiple "child" entries for a single "person", and can return collections of such objects,
+like "children".
+Thus, SPARQL provides a full set of analytic query operations such as JOIN , SORT , AGGREGATE  for
+data who se schema  is intrinsically part of the data rather than requiring a separate schema
+definition. Howev er, schema information (the ontology) is often prov ided externally, to allow
+joining of different  datasets  unambig uously. In addition, SPARQL provides specific graph  traversal
+syntax for data that can be thought of as a graph.Advantages

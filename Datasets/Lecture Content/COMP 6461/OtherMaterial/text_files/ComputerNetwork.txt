@@ -1,0 +1,82 @@
+4/12/24, 12:59 PM Computer network - Wikipedia
+https://en.wikipedia.org/wiki/Computer_network 1/25Computer network
+A computer netwo rk is a set of computers  sharing resources located on or provided by network
+nodes . Compu ters use common communication protocols  over digital  interconnections  to
+communicate with  each other. These  interconnections are made up of telecommunication network
+technologies based  on physically wired, optical , and wire less radio-frequency  meth ods that may  be
+arranged in a variety of network topologies .
+The nodes of a computer network can include personal computer s, servers , networking hardw are,
+or other specialize d or general-purpose hosts . They are identified by network addresses  and may
+have hostnames . Hostnames serve as memorable labels for the nodes and are rarely changed after
+initial assignment. Network addr esses serve for locating and identifying the nodes by
+communication protocols such as the Internet Protocol .
+Computer network s may be classified  by many criteria, including the transmission medi um used to
+carry signals, bandwidth , communications protocols  to organize network traffic , the network size,
+the topology, traffic control  mechanisms, and organizational intent.
+Computer network s support many applications  and services , such as access to the World Wide
+Web , digital video  and audio , shared use of application and storage servers , printers  and fax
+machines , and use of email and instant messaging applications.
+Computer networking may be considered a branch of computer science , computer enginee ring,
+and telecommunications , since it relies on the theoretical and practical application of the related
+disciplines. Compu ter networking was influenced by a wide array of technological developments
+and historical milestones.
+In the late 1950s, a network of computers was built for the U.S. military Semi-Automatic
+Ground Environment  (SAGE) radar  system[1][2][3] using the Bell 101 modem . It was the first
+commercial modem  for computers, released by AT&T Corporation  in 1958. The modem
+allowed digital data  to be transmitted over regular unconditioned telephone lines at a speed of
+110 bits per second (bit/s).
+In 1959, Christopher Strachey  filed a patent application for time-sharing  and John McCarthy
+initiated the first project to implement time-sharing of user programs at MIT .[4][5][6][7] Strachey
+passed the concept on to J. C. R. Licklider  at the inaugural UNESCO Information Processing
+Conference  in Paris that year .[8] McCarthy was instrumental in the creation of three of the
+earliest time-sharing systems (the Compatible Time-Sharing System  in 1961, the BBN Time-
+Sharing System  in 1962, and the Dartmouth Time Sharing System  in 1963).
+In 1959, Anatoly Kitov  proposed to the Central Committee of the Communist Party of the Soviet
+Union a detailed plan for the re-organization of the control of the Soviet armed forces and of
+the Soviet economy on the basis of a network of computing centers.[9] Kitov's proposal was
+rejected, as later was the 1962 OGAS  economy management network project.[10]
+In 1960, the commercial airline reservation system semi-automatic business research
+environment  (SABRE) went online with two connected mainframes .History
+4/12/24, 12:59 PM Computer network - Wikipedia
+https://en.wikipedia.org/wiki/Computer_network 3/25
+Network Packet
+Common network topologiesaccess and use resources provided by devices on the network, such as printing a document on a
+shared network printer or use of a shared storage device. A network allows sharing of files, data,
+and other types of information giving authorized users the ability to access information stored on
+other com puters on the network. Distributed computing  uses computing resources across a
+network to accomplish tasks.
+Most modern computer networks use protocols based on
+packet-mode transmission. A network packet  is a formatted
+unit of data  carried by a packet-switched network .
+Packets consist of two types of data: control information and
+user data (payload). The control information provides data the
+network needs to deliver the user data, for example, source and
+destination network addresses , error detection  codes, and
+sequencing information. Typically, control information is
+found in packet headers  and trailers , with payload data  in
+between.
+With pack ets, the bandwidth  of the transmission medium can be better shared among users than if
+the netwo rk were circuit switched . When one user is not sending packe ts, the link can be filled with
+packets from other users, and so the cost can be shared, with relatively little interference, provided
+the link is not overused. Often the route a packet needs to take through a network is not
+immediately available. In that case, the packet is queued  and waits until a link is free.
+The phys ical link technologies of packet networks typically limit the size of packets to a certain
+maximum transmission unit (MTU). A longer message may be fragmented before it is transferred
+and once the packets arrive, they are reassembled to construct the original message.
+The physical or geographic locations of network nodes and
+links generally have relatively little effect on a network, but the
+topology of interconnections of a network can significantly
+affect its throughput and reliability . With many technologies,
+such as bus or star networks, a single failure can cause the
+network to fail entirely. In general, the more interconnections
+there are, the more robust the network is; but the more
+expensive it is to install. Therefore, most network diagrams are
+arranged by their network topology  which is the map of logical interconnections of network hosts.
+Common topologies are:
+Bus network : all nodes are connected to a common medium along this medium. This was the
+layout used in the original Ethernet , called 10BASE5  and 10BASE2 . This is still a common
+topology on the data link layer , although modern physical layer  variants use point-to-point  links
+instead, forming a star or a tree.
+Star network : all nodes are connected to a special central node. This is the typical layout found
+in a small switched Ethernet  LAN, where each client connects to a central network switch, andNetwork packet
+Network topology

@@ -1,0 +1,300 @@
+Data Communication and Computer Networks4. Transport LayerPART-ADr. Aiman Hanna Department of Computer Science & Software Engineering Concordia University, Montreal, CanadaThese slides have mainly been extracted, modified and updated from original slides of :Computer Networking: A Top Down Approach,  6th edition  Jim Kurose, Keith RossAddison-Wesley, 2013Additional  materials have been extracted, modified and updated from:  Understanding Communications and Networking, 3e by William A. Shay 2005 Copyright © 1996-2013 J.F Kurose and K.W. Ross Copyright © 2005 William A. ShayCopyright © 2023 Aiman Hanna All rights reserved 
+Transport Layer A
+3-2
+Transport services and protocols
+provide logical communication between app processes running on different hoststransport protocols run in end systems send side: breaks app messages into segments, passes to network layerrcv side: reassembles segments into messages, passes to app layermore than one transport protocol available to appsInternet: TCP and UDP
+Transport Layer A
+3-3
+Transport vs. network layer
+network layer: logical communication between hoststransport layer: logical communication between processes relies on, enhances, network layer services
+12 kids in Ann’s house sending letters to 12 kids in Bill’s house:hosts = housesprocesses = kidsapp messages = letters in envelopestransport protocol = Ann and Bill who demux to in-house siblings (responsible for collection and distribution)network-layer protocol = postal service (move letters from house to house, not from person to person)
+
+household analogy:
+Transport Layer A
+3-4
+Internet transport-layer protocols
+reliable, in-order delivery (TCP)congestion control flow controlconnection setupunreliable, unordered delivery: UDPno-frills extension of “best-effort” IPservices not available: delay guarantees (timing)bandwidth guarantees (throughput) Why there are no such guarantees?
+
+
+
+
+
+Transport Layer A
+3-5
+UDP: User Datagram Protocol [RFC 768]
+“no frills,” “bare bones” Internet transport protocol“best effort” service, UDP segments may be:delivered out-of-order to applostconnectionless:no handshaking between UDP sender, receivereach UDP segment handled independently of others
+UDP is used by:streaming multimedia apps (loss tolerant, rate sensitive)DNSSNMPRIPreliable transfer over UDP: add reliability at application layerapplication-specific error recovery!
+Transport Layer A
+3-6
+UDP
+finer application-level control over what is sent and whenno connection establishment (which can add delay)no congestion control: UDP can blast away as fast as desiredno need for retransmission to achieve reliability (not needed in many cases)simple: no connection state at sender, receiversmall header size: 8 bytes of header overhead compared to 20 bytes with TCP
+
+why is there a UDP?
+Transport Layer A
+3-7
+UDP: segment header
+
+
+source port #
+dest port #
+
+
+
+32 bits
+
+
+applicationdata (payload)
+UDP segment format
+
+length
+checksum
+length, in bytes of UDP segment, including header
+
+data field may contain for instance a DNS request or query, or streaming data length indicates the amount of attached data since it variesChecksum is used to perform basic error detection 
+
+Transport Layer A
+3-8
+UDP checksum
+sender:treat segment contents, including header fields,  as sequence of 16-bit integerschecksum: addition (one’s complement sum) of segment contentssender puts checksum value into UDP checksum field
+receiver:compute sum of received segmentcheck if sum and checksum add to all 1’s:NO - error detectedYES - no error detected. But maybe errors nonetheless? More later ….
+Goal: detect “errors” (e.g., flipped bits) in transmitted segment
+Transport Layer A
+3-9
+Internet checksum: example
+example: add two 16-bit integers
+  0  0  1  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  1  1  1  0  1  1  1  0  1  1  1  0  1  1  1  0  0  0  0  1  0  0  0  1  0  0  0  1  0  0
+
+sum
+checksum
+Transport Layer A
+3-10
+Internet checksum: example
+  0  0  1  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  1  0  0  0  0  1  0  0  0  1  0  0  0  1  0  0  
+
+result
+checksum
+at the receiver, add both numbers to the checksum. result should be all 1s; otherwise something has been altered
+1st number
+2nd number
+1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+Transport Layer A
+3-11
+UDP checksum
+why UDP provides error-detection in the first place?error-checking is done at the data-link layer, however:at one, or more, of the links in between, the utilized protocol may not provide error checking, which in essence nullifies all the rest of the checking even if all links provide error checking, the packets may get altered while being stored in routers memoryUDP provides error checking as an end-end principleSince the data finally made it to the destination, at least warn the user in case it is altereduser may accept it with a warning, or reject it Notice that after all UDP does not do anything in case an error has occurred
+Transport Layer A
+3-12
+Principles of reliable data transfer
+important in Application, Transport, and Data-Link layerstop-10 list of important networking topics!
+characteristics of unreliable channel will determine complexity of reliable data transfer protocol (rdt)
+
+Transport Layer A
+3-13
+characteristics of unreliable channel will determine complexity of reliable data transfer protocol (rdt)
+
+Principles of reliable data transfer
+important in application, transport, link layerstop-10 list of important networking topics!
+Transport Layer A
+3-14
+characteristics of unreliable channel will determine complexity of reliable data transfer protocol (rdt)
+important in application, transport, link layerstop-10 list of important networking topics!
+Principles of reliable data transfer
+Transport Layer A
+3-15
+Reliable data transfer: getting started
+sendside
+receiveside
+Transport Layer A
+3-16
+we’ll:incrementally develop sender, receiver sides of reliable data transfer protocol (rdt)consider only unidirectional data transferbut control info will flow on both directions!use finite state machines (FSM)  to specify sender, receiver
+
+
+State 1
+
+
+
+State 2
+event causing state transition
+actions taken on state transition
+
+state: when in this “state” next state uniquely determined by next event
+
+
+
+event
+actions
+
+Reliable data transfer: getting started
+Transport Layer A
+3-17
+rdt1.0: reliable transfer over a reliable channel
+underlying channel perfectly reliableno bit errorsno loss of packetsno need for receiver to send feedback to the sender separate FSMs for sender, receiver:sender sends data into underlying channelreceiver reads data from underlying channelsuch protocols are referred to as Unrestricted Protocols
+
+Wait for call from above
+
+packet = make_pkt(data)udt_send(packet)
+rdt_send(data)
+
+
+extract (packet,data)deliver_data(data)
+
+Wait for call from below
+
+
+
+
+rdt_rcv(packet)
+rdt 1.0 sending side
+rdt 1.0 receiving side
+Transport Layer A
+3-18
+underlying channel may flip bits in packetchecksum to detect bit errorshowever, for now we assume no lossthe question: how to recover from errors:acknowledgements (ACKs): receiver explicitly tells sender that pkt received OKnegative acknowledgements (NAKs): receiver explicitly tells sender that pkt had errorssender retransmits pkt on receipt of NAKnew mechanisms in rdt2.0 (beyond rdt1.0):error detectionreceiver feedback: control msgs (ACK,NAK) rcvr->sender
+rdt2.0: channel with bit errors
+
+How do humans recover from “errors”during conversation?
+Transport Layer A
+3-19
+underlying channel may flip bits in packetchecksum to detect bit errorsthe question: how to recover from errors:acknowledgements (ACKs): receiver explicitly tells sender that pkt received OKnegative acknowledgements (NAKs): receiver explicitly tells sender that pkt had errorssender retransmits pkt on receipt of NAKnew mechanisms in rdt2.0 (beyond rdt1.0):error detectionfeedback: control msgs (ACK,NAK) from receiver to senderRetransmission protocols based on ACKs and NAKs retransmission are referred to as ARQ (Automatic Repeat reQuest) protocols
+rdt2.0: channel with bit errors
+Transport Layer A
+3-20
+rdt2.0: FSM specification
+
+Wait for call from above
+
+
+
+
+
+
+L  no action required
+
+rdt 2.0 sending side
+rdt 2.0 receiving side
+Transport Layer A
+3-21
+rdt2.0: operation with no errors
+
+Wait for call from above
+
+
+
+
+Wait for call from below
+
+
+
+
+
+
+
+
+Transport Layer A
+3-22
+rdt2.0: error scenario
+
+Wait for call from above
+
+
+
+
+
+Wait for call from below
+
+
+
+
+
+
+
+
+
+
+
+udt_send(sndpkt)
+rdt_rcv(rcvpkt) &&   isNAK(rcvpkt)
+
+Note: This shows an error scenario followed by a no-error one
+Transport Layer A
+3-23
+rdt2.0 has a fatal flaw!
+remember, we still assume no loss is possible, however:what happens if ACK/NAK corrupted?sender doesn’t know what happened at receiver!can’t just retransmit to solve the problem! possible duplicates
+handling duplicates: sender retransmits current pkt if ACK/NAK corruptedsender adds sequence number to each pktreceiver discards (doesn’t deliver up) duplicate pkt
+Transport Layer A
+3-24
+rdt2.1: sender, handles garbled ACK/NAKs
+
+Wait for call 0 from above
+
+
+
+
+
+
+sndpkt = make_pkt(1, data, checksum)udt_send(sndpkt)
+rdt_send(data)
+
+
+rdt 2.1 sending side
+Transport Layer A
+3-25
+
+
+sndpkt = make_pkt(NAK, chksum)udt_send(sndpkt)
+rdt_rcv(rcvpkt) &&  not corrupt(rcvpkt) && has_seq0(rcvpkt)
+
+
+
+rdt_rcv(rcvpkt) && notcorrupt(rcvpkt)   && has_seq0(rcvpkt) 
+
+extract(rcvpkt,data)deliver_data(data)sndpkt = make_pkt(ACK, chksum)udt_send(sndpkt)
+
+rdt_rcv(rcvpkt) && corrupt(rcvpkt)
+
+sndpkt = make_pkt(ACK, chksum)udt_send(sndpkt)
+rdt_rcv(rcvpkt) && not corrupt(rcvpkt) && has_seq1(rcvpkt)
+
+rdt_rcv(rcvpkt) && corrupt(rcvpkt)
+
+sndpkt = make_pkt(ACK, chksum)udt_send(sndpkt)
+sndpkt = make_pkt(NAK, chksum)udt_send(sndpkt)
+
+
+rdt2.1: receiver, handles garbled ACK/NAKs
+rdt 2.1 receiving side
+Transport Layer A
+3-26
+rdt2.1: discussion
+sender:seq # added to pkttwo seq. #’s (0,1) will suffice.  Why?must check if received ACK/NAK corrupted twice as many statesstate must “remember” whether “expected” pkt should have seq # of 0 or 1 
+receiver:must check if received packet is duplicatestate indicates whether 0 or 1 is expected pkt seq #note: receiver can not know if its last ACK/NAK received OK at sender
+Transport Layer A
+3-27
+rdt2.2: a NAK-free protocol
+same functionality as rdt2.1, using ACKs onlyinstead of NAK, receiver sends ACK for last pkt received OKreceiver must explicitly include seq # of pkt being ACKed duplicate ACK at sender results in same action as NAK: retransmit current pkt
+Transport Layer A
+3-28
+rdt2.2: sender
+
+Wait for call 0 from above
+
+
+
+
+
+
+sndpkt = make_pkt(1, data, checksum)udt_send(sndpkt)
+rdt_send(data)
+
+
+rdt 2.2 sending side
+Transport Layer A
+3-29
+
+
+
+
+rdt_rcv(rcvpkt) && notcorrupt(rcvpkt)   && has_seq0(rcvpkt) 
+
+extract(rcvpkt,data)deliver_data(data)sndpkt = make_pkt(ACK, 0, chksum)udt_send(sndpkt)
+
+rdt2.2: receiver
+rdt 2.2 receiving side

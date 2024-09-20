@@ -1,0 +1,37 @@
+4/12/24, 12:47 PM Machine learning - Wikipedia
+https://en.wikipedia.org/wiki/Machine_learning 1/36Machine learning
+Machine learning  (ML) is a field of study  in artificial intelligence  concern ed with the
+development and study of statistical algorithms  that can learn from data  and generalize  to unsee n
+data, and thus perform tasks  without explicit instructions .[1] Recently, artificial neural networks
+have been able to surpass many previous approaches in performance.[2][3]
+Machine learning  approaches have been applied to many fields including natural language
+processing , computer vision , speech recognition , email filtering , agriculture , and medicine.[4][5]
+ML is known in its application across business problems under the name predictive analytics .
+Although not all machine learning is statistically  based, computational statistics  is an important
+source of the field's methods.
+The math ematical foundations of ML are provided by mathematical optimization  (mathematical
+programming) methods. Data mining  is a related (paral lel) field of study,  focusing on exploratory
+data analysis  (EDA) through unsupervised learning .[7][8]
+From a theoretical viewpoint, probably approxi mately correct (PAC) learning  provides a
+framework for describing machine learning.
+The term machine learning  was coined in 1959 by Arthur Samuel , an IBM  employee and pioneer
+in the field of computer gaming  and artificial intelligence .[9][10] The synonym self-teaching
+computers  was also used in this time period.[11][12]
+Although the earliest machine learn ing model was introduced in the 1950s when Arthur Samuel
+invented a program  that calculated the winning chance in checkers for each side, the history of
+machine learning roots back to decades of human desire and effort to study human cognitive
+processes.[13] In 1949, Canadian psychologist Donald Hebb  published the book The Organization
+of Behavior , in which he introduced a theoretical neural structure  formed by certain interactions
+among nerve cells.[14] Hebb's model of neurons  interacti ng with one another set a groundwork for
+how AIs and machine learning algorithms work under nodes, or artificial neurons  used by
+computers to communicate data.[13] Other researchers who have studied  human cognitive systems
+contributed to the modern machine  learning technologies as well, inclu ding logician Walter Pitts
+and Warren McCulloch , who  proposed the early mathematical models of neural networks to com e
+up with algorithms that mirror human thought processes.[13]
+By the early 1960s an experimental "learning machine" with punched tape  memory, called
+Cybertron, had been developed  by Raytheon Company  to analyze sonar  signals,
+electrocardiograms , and speech patterns using rudi mentary reinforcement learning . It was
+repetitively "trained" by a human operator/teacher to recognize patterns and equipped with a
+"goof " button to cause it to re-evaluate incorrect decisions.[15] A repres entative book on research
+into machine learning during the 1960s was Nilsson's book on Learning Machines, dealing mostly
+with machine learning for pattern  classification.[16] Inte rest related to pattern recog nitionHistory

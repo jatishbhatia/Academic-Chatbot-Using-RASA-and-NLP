@@ -1,0 +1,71 @@
+4/11/24, 3:10 AM Go-Back-N ARQ - Wikipedia
+https://en.wikipedia.org/wiki/Go-Back-N_ARQ 1/2Go-Back-N ARQ
+(Redirected from Go back n )
+Go-Back- N ARQ  is a specific instan ce of the automatic repeat request  (ARQ) protocol, in which
+the sending process continues to send a number of frames  specified by a window size even without
+receiving an acknowledgement  (ACK) packet from the receiver. It is a special case of the general
+sliding window protocol  with the transmit  window size of N and receive windo w size of 1. It can
+transmit N frames to the peer before requiring an ACK.
+The receiver process keeps track of the sequence number of the next frame it expects to receive. It
+will discard any frame that does not have the exact sequence number it expects (either a duplicate
+frame it already acknowledged, or an out-of-order frame it expects to receive later) and will send
+an ACK for the last correct in-order frame.[1] Once the sender has sent all of the frames in its
+window , it will detect that all of the frames since the first lost frame are outstanding , and will go
+back to the seque nce number of the last ACK it received from the receiver process and fill its
+window starting with that frame and continue the process over again.
+Go-Back- N ARQ is a more efficient use of a connection than Stop-and-wait ARQ , since unlike
+waiting for an acknowledgement for each packet, the connection is still being utilized as packets
+are being sent. In other words, during the time that would otherwis e be spent waiting, more
+packets are being sent. However, this method also results in sending frames multiple times – if any
+frame was lost or damaged, or the ACK acknowledging them was lost or damaged, then that frame
+and all following frames in the send window (even if they were received  without error) will be re-
+sent. To avoid this, Selective Repeat ARQ  can be used.[2]
+These examples assume an infinite number of sequence and request numbers.[1]
+N  := window size
+Rn := request number
+Sn := sequence number
+Sb := sequence base
+Sm := sequence max
+function receiver is
+    Rn := 0
+    Do the following forever:
+        if the packet received = Rn and the packet is error free then
+            Accept the packet and send it to a higher layer
+            Rn := Rn + 1
+        else
+            Refuse packet
+        Send a Request for Rn
+function sender is
+    Sb := 0
+    Sm := N + 1
+    Repeat the following steps forever:
+        if you receive a request number where Rn > Sb then
+            Sm := (Sm − Sb) + Rn
+            Sb := Rn
+        if no packet is in transmission thenPseudocode
+4/11/24, 3:10 AM Go-Back-N ARQ - Wikipedia
+https://en.wikipedia.org/wiki/Go-Back-N_ARQ 2/2            Transmit a packet where Sb ≤ Sn ≤ Sm.  
+            Packets are transmitted in order.
+There are a few things to keep in mind when choosing a value for N:
+1. The sender must not transmit too fast. N should be bounded by the receiver ’s ability to process
+packets.
+2. N must be smaller than the number of sequence numbers (if they are numbered from zero to
+N) to verify transmission in cases of any packet (any data or ACK packet) being dropped.[2]
+3. Given the bounds presented in (1) and (2), choose N to be the largest number possible.[3]
+1. Kurose, James F .; Keith W . Ross. Computer Networking: A Top-Down Approach . ISBN  0-321-
+49770-8 .
+2. Tanenbaum, Andrew S. Computer Networks  (https://archive.org/details/computernetworks00ta
+ne_2)  (4th ed.). ISBN  0-13-066102-3 .
+3. Marbach, Peter . "ARQ Protocols"  (http://www .cs.toronto.edu/~marbach/COURSES/CSC358_S
+14/l4.pdf)  (PDF) . Retrieved August 24,  2013 .
+Reliable Data Transfer
+Pipeline (software)
+Automatic repeat request
+Computer networking
+Selective Repeat ARQ
+Go-Back-N ARQ demonstration in a Java applet  (http://media.pearsoncmg.com/aw/aw_kurose
+_network_4/applets/go-back-n/index.html)
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Go-Back-N_ARQ&oldid=1088811887"Choosing a window size ( N)
+References
+See also
+External links

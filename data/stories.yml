@@ -1,0 +1,344 @@
+version: "3.1"
+#Add story
+# stories:
+
+# stories:
+# - story: Get courses by university
+#   steps:
+#   - intent: get_course_by_university
+#     entities:
+#     - uni
+#   - action: course_by_uni
+
+# - story: Get courses by topic
+#   steps:
+#   - intent: discuss_topic_in_courses
+#     entities:
+#     - topic
+#   - action: courses_by_topic
+
+# - story: Get topics discussed in a course lecture
+#   steps:
+#   - intent: get_topics_in_course_lec
+#     entities:
+#     - course
+#     - lecture
+#   - action: topics_in_course_lec
+
+# - story: Get courses by university and subject
+#   steps:
+#   - intent: get_courses_by_uni_subject
+#     entities:
+#     - uni
+#     - subject
+#   - action: courses_by_uni_subject
+
+# - story: Get material for a topic in a course
+#   steps:
+#   - intent: get_material_topic_in_course
+#     entities:
+#     - sub_num
+#     - subject
+#     - topic
+#   - action: material_topic_in_course
+
+# - story: Get credits of a course
+#   steps:
+#   - intent: get_credits_of_course
+#     entities:
+#     - sub_num
+#     - subject
+#   - action: credits_of_course
+
+# - story: Get links for a course
+#   steps:
+#   - intent: get_links_course_number
+#     entities:
+#     - sub_num
+#     - subject
+#   - action: links_course_number
+
+# - story: Get content of a lecture in a course
+#   steps:
+#   - intent: get_content_of_lec_in_course
+#     entities:
+#     - sub_num
+#     - subject
+#     - lecture
+#   - action: content_of_lec_in_course
+
+# - story: Get readings for a topic in a course
+#   steps:
+#   - intent: get_reading_for_topic_course
+#     entities:
+#     - topic
+#     - course
+#   - action: reading_for_topic_course
+
+# - story: Get competencies for a course
+#   steps:
+#   - intent: get_competency_by_course
+#     entities:
+#     - sub_num
+#     - subject
+#   - action: competency_by_course
+
+# - story: Get grade of a student in a course
+#   steps:
+#   - intent: get_student_grade_in_course
+#     entities:
+#     - fname
+#     - lname
+#     - sub_num
+#     - subject
+#   - action: student_grade_in_course
+
+# - story: Get completed courses of a student
+#   steps:
+#   - intent: get_student_completed_courses
+#     entities:
+#     - sub_num
+#     - subject
+#   - action: student_completed_courses
+
+# - story: Print transcript of a student
+#   steps:
+#   - intent: print_transcript
+#     entities:
+#     - fname
+#     - lname
+#   - action: print_transcript
+
+# - story: Get total triples in the KB
+#   steps:
+#   - intent: get_total_triples
+#   - action: total_triples
+
+# - story: Get number of courses in the KB
+#   steps:
+#   - intent: get_num_of_courses
+#   - action: num_of_courses
+
+
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_great
+#   - action: utter_happy
+
+# - story: sad path 1
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: affirm
+#   - action: utter_happy
+
+# - story: sad path 2
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: mood_unhappy
+#   - action: utter_cheer_up
+#   - action: utter_did_that_help
+#   - intent: deny
+#   - action: utter_goodbye
+
+stories:
+- story: Get courses by university
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_course_by_university
+    # entities:
+    # - uni
+  - action: course_by_uni
+
+- story: Get courses by topic
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_courses_discussed_topic
+    # entities:
+    # - topic
+  - action: course_discussed_topic
+
+- story: Get topics discussed in a course lecture
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_topics_in_course_lecture
+    # entities:
+    # - course
+    # - lecture
+  - action: topics_in_course_lec
+
+- story: Get courses by university and subject
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_courses_by_university_subject
+    # entities:
+    # - uni
+    # - subject
+  - action: courses_by_uni_subject
+
+- story: Get material for a topic in a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_material_topic_in_course
+    # entities:
+    # - sub_num
+    # - subject
+    # - topic
+  - action: material_topic_in_course
+
+- story: Get credits of a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_credits_of_course
+    # entities:
+    # - sub_num
+    # - subject
+  - action: credits_of_course
+
+- story: Get links for a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_links_course_number
+    # entities:
+    # - sub_num
+    # - subject
+  - action: links_course_number
+
+- story: Get content of a lecture in a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_content_of_lecture_in_course
+    # entities:
+    # - sub_num
+    # - subject
+    # - lecture
+  - action: content_of_lec_in_course
+
+- story: Get readings for a topic in a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_reading_for_topic_course
+    # entities:
+    # - topic
+    # - course
+  - action: reading_for_topic_course
+
+- story: Get competencies for a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_competency_by_course
+    # entities:
+    # - sub_num
+    # - subject
+  - action: competency_by_course
+
+- story: Get grade of a student in a course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: get_student_grade_in_course
+    # entities:
+    # - fname
+    # - lname
+    # - sub_num
+    # - subject
+  - action: student_grade_in_course
+
+- story: Get completed courses of a student
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: student_completed_courses
+    # entities:
+    # - sub_num
+    # - subject
+  - action: student_completed_courses
+
+- story: Print transcript of a student
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: print_transcript
+    # entities:
+    # - fname
+    # - lname
+  - action: print_transcript
+
+- story: Get total triples in the KB
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: total_triples
+  - action: total_triples
+
+- story: Get course number
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: course_number
+  - action: course_number
+
+- story: Get course event covers topic
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: topics_course_event_course
+  - action: topics_course_event_course
+
+- story: Get topics covered in course
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: topics_in_course_events
+  - action: topics_in_course_events
+
+- story: Get number of courses in the KB
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: num_of_courses
+  - action: num_of_courses
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+

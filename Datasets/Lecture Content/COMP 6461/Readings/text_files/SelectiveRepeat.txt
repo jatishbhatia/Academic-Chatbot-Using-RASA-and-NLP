@@ -1,0 +1,89 @@
+4/11/24, 3:11 AM Selective Repeat ARQ - Wikipedia
+https://en.wikipedia.org/wiki/Selective_Repeat_ARQ 1/3Selective Repeat ARQ
+(Redirected from Selective repeat )
+Selective Repeat ARQ  or Selective Reject ARQ  is a specific instan ce of the automatic repeat
+request  (ARQ) protocol used to manage sequence numbers and retransm issions in reliable
+communications .
+Selective Repeat is part of the autom atic repeat request (ARQ). With selective repeat, the sender
+sends a number of frames specified by a window size even without the need to wait for individual
+ACK from  the receiver as in Go-Back-N ARQ . The receiver may selectively reject  a single frame,
+which may be retransmitted alone; this contrasts with other forms of ARQ, which must send every
+frame from that point again. The receiver accepts out-of-order frame s and buffers them. The
+sender individually retransmits frames that have timed out.
+It may be used as a protocol for the delivery and acknowledgement of message units, or it may be
+used as a protocol for the delivery of subdivided message sub-units.
+When used as the protocol for the delivery of messages , the sending process continues to send a
+number of frames  specified by a window size even after a frame loss. Unlike Go-Back-N ARQ , the
+receiving process will continue to accept and acknowledge  frames sent after an initial error; this is
+the general case of the sliding window protocol  with both transm it and receive window sizes
+greater than 1.
+The receiver process keeps track of the sequence number of the earliest frame it has not received,
+and sends that number with every acknowledgement  (ACK) it sends. If a frame from the sender
+does not reach the receiver, the sender continues to send subsequent frames until it has emptied its
+window . The receiver continues to fill its receiving window with the subsequen t frames, replying
+each time with an ACK containing the sequence number of the earliest missing frame . Once the
+sender has sent all the frames in its window , it re-sen ds the frame number given by the ACKs, and
+then continues where it left off.
+The size of the sending and receiving windows must be equal, and half the maximum sequence
+number (assumin g that sequence numbers are numbered from 0 to n−1) to avoid
+miscommunication in all cases of packets being dropped. To understand this, consider the case
+when all ACKs are destroyed. If the receiving window is larger than half the maximum sequence
+number, some, possibly even all, of the packets that are present after timeouts are duplicates that
+are not recognized as such. The sender moves its window for every packet that is acknowledged.[1]
+When used as the protocol for the delivery of subdivided mes sages  it works somewhat
+differently. In non-continuous channels where messages may be variable in length, standard ARQ
+or Hybri d ARQ protocols may treat the message as a single unit. Alternately selective
+retransmission may be employed in conjunction with the basic ARQ mechanism where the
+message is first subdivided into sub-blocks (typically of fixed length) in a process called packetSummary
+Concept
+4/11/24, 3:11 AM Selective Repeat ARQ - Wikipedia
+https://en.wikipedia.org/wiki/Selective_Repeat_ARQ 2/3segmentation . The original variable length messa ge is thus represented as a concatenation of a
+variable number of sub-blocks. While in standard ARQ the message as a whole is either
+acknowledged (ACKed) or negatively  acknowledged (NAKed), in ARQ with selective transmission
+the ACK response would additiona lly carry a bit flag indicating the identity of each sub-block
+successfully received. In ARQ with selective retransmission of sub-divided messages each
+retransmission diminishes in length, needing to only contain the sub-blocks that were linked.
+In most channel models with variable length messages, the probabili ty of error-free reception
+diminishes in inverse proportion with increasing message length. In other words, it's easier to
+receive a short message than a longer message. Therefore, standard ARQ techniques involving
+variable length messages have increased difficulty delivering longer messages, as each repeat is the
+full length . Selective re-transmission applied to variable length messages completely eliminates the
+difficulty in delivering longer messag es, as successfully delivered sub-blocks are retained after each
+transmission, and the number of outstanding sub-blocks in following transmissions diminishes.
+Selective Repeat is implemented in UDP transmission.
+The Transmission Control Protocol  uses a variant of Go-Back-N ARQ  to ensu re reliable
+transmission of data over the Internet Protocol , which does not provide guaranteed delivery of
+packets; with Selective Acknowledgement (SACK) extension , it may also use Selective Repeat ARQ.
+The ITU-T  G.hn  standard, which provides a way to create a high-speed (up to 1 Gigabit/s) Local
+area network  using existing home wiring (power lines , phone lines and coaxial cables ), uses
+Selective Repeat ARQ to ensure reliable transmission over noisy media. G.hn  employs packet
+segmentation  to sub-divide messages into smaller units, to increase the probability that each one is
+received correctly.
+The STANAG 5066  Profile for High Frequency (HF) Radio Data Communication uses selective
+repeat ARQ, with a maximum window size of 128 protocol-data units (PDUs).
+Go-Back-N ARQ
+Reliable Data Transfer
+Pipeline (software)
+Automatic repeat request
+Computer networking
+1. Tanenbaum, Andrew S. (2003). Computer networks  (https://archive.org/details/computernetwor
+ks00tane_2/page/223) . Upper Saddle River , New Jersey : Prentice Hall . pp. 223 (https://archiv
+e.org/details/computernetworks00tane_2/page/223) . ISBN  0-13-066102-3 .
+Lockitt, J. A.; Gatfield, A. G.; Dobyns, T. R. (1975). A Selective Repeat ARQ system . 3rd
+International Conference on Digital Satellite Communications. 3rd International Conference onExamples
+See also
+References
+Further reading
+4/11/24, 3:11 AM Selective Repeat ARQ - Wikipedia
+https://en.wikipedia.org/wiki/Selective_Repeat_ARQ 3/3Digital Satellite Communications . pp. 189–195. Bibcode :1975dsc..conf..189L  (https://ui.adsabs.
+harvard.edu/abs/1975dsc..conf..189L) .
+Weldon, E. (March 1982). "An Improved Selective-Repeat ARQ Strategy". IEEE T ransactions
+on Communications . 30 (3): 480–486. Bibcode :1982ITCom..30..480W  (https://ui.adsabs.harvar
+d.edu/abs/1982ITCom..30..480W) . doi:10.1109/TCOM.1982.1095497  (https://doi.org/10.1 109%
+2FTCOM.1982.1095497) . ISSN  0090-6778  (https://www .worldcat.org/issn/0090-6778) .
+Comroe, R.; D. Costello (July 1984). "ARQ schemes for data transmission in mobile radio
+systems". IEEE Journal on Selected Areas in Communications . 2 (4): 472–481.
+Bibcode :1984IJSAC...2..472C  (https://ui.adsabs.harvard.edu/abs/1984IJSAC...2..472C) .
+doi:10.1109/JSAC.1984.1 146084  (https://doi.org/10.1 109%2FJSAC.1984.1 146084) .
+S2CID  22759443  (https://api.semanticscholar .org/CorpusID:22759443) .
+Retrieved from "https://en.wikipedia.org/w/index.php?title=Selective_Repeat_ARQ&oldid=1191281304"
