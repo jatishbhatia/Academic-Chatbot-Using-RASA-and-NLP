@@ -21,8 +21,6 @@
 
 7. Report: The project report, as detailed PDF as detailed in the project description.
 
-8. Originality Form: Forms attesting to the originality of our work, electronically signed by each team member.
-
 # Steps to execute the code : 
 
 1. Install all the required libraries to run this project using the requirements.txt file. Switch directory to the location of this README file and run the below command. 
@@ -40,3 +38,6 @@ python main.py
 6. Run the server and create a new dataset. Upload the generated knowledge base file "Graph.ttl"
 
 7. Go to the Queries tab and run the queries given in the directory - Queries and Results to get the output.  
+
+# Report
+[Download the report (PDF)](https://github.com/jatishbhatia/Chatbot-Using-RASA-and-NLP/blob/main/Report/Report.pdf)
