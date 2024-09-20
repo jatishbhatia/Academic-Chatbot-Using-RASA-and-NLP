@@ -1,0 +1,7 @@
+.rasa/
+rasa_env/
+results/
+tests/
+models/
+.idea/
+

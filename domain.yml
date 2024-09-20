@@ -1,0 +1,209 @@
+version: "3.1"
+
+entities:
+  - uni
+  - fname
+  - lname
+  - sub_num
+  - subject
+  - lecture
+  - topic
+  - course
+  - event
+  - event_num
+
+
+slots:
+  uni:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: uni
+  fname:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: fname
+  lname:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: lname
+  sub_num:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: sub_num
+  subject:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: subject
+  lecture:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: lecture
+  topic:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: topic
+  course:
+    type: text
+    initial_value: "unknown"
+    mappings:
+      - type: from_entity
+        entity: course
+  event:
+    type: text
+    initial_value: 'unknown'
+    mappings:
+      - type: from_entity
+        entity: event
+  event_num:
+    type: text
+    initial_value: 'unknown'
+    mappings:
+      - type: from_entity
+        entity: event_num
+
+# slots:
+#   - uni:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: uni
+#   - fname:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: fname
+#   - lname:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: lname
+#   - sub_num:
+#     type: int
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: sub_num
+#   - subject:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: subject
+#   - lecture:
+#     type: int
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: lecture
+#   - topic:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: topic
+#   - course:
+#     type: text
+#     initial_value: "unknown"
+#     mappings:
+#       - type: from_entity
+#         entity: course
+
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - get_course_by_university
+  - get_courses_discussed_topic
+  - get_topics_in_course_lecture
+  - get_courses_by_university_subject
+  - get_material_topic_in_course
+  - get_credits_of_course
+  - get_links_course_number
+  - get_content_of_lecture_in_course
+  - get_reading_for_topic_course
+  - get_competency_by_course
+  - get_student_grade_in_course
+  - student_completed_courses
+  - print_transcript
+  - total_triples
+  - num_of_courses
+  - course_number
+  - topics_course_event_course
+  - topics_in_course_events
+  - out_of_scope
+
+actions:
+  - course_by_uni
+  - course_discussed_topic
+  - topics_in_course_lec
+  - courses_by_uni_subject
+  - material_topic_in_course
+  - credits_of_course
+  - links_course_number
+  - content_of_lec_in_course
+  - reading_for_topic_course
+  - competency_by_course
+  - student_grade_in_course
+  - student_completed_courses
+  - print_transcript
+  - total_triples
+  - num_of_courses
+  - course_number
+  - topics_course_event_course
+  - topics_in_course_events
+  - action_default_fallback
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_out_of_scope:
+  - text: "Sorry, I can't handle that request."
+
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that. Could you rephrase?"
+
+  utter_default:
+  - text: "Sorry I didn't get that. Can you rephrase?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
