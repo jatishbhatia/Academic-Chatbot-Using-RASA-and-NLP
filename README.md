@@ -40,4 +40,5 @@ python main.py
 7. Go to the Queries tab and run the queries given in the directory - Queries and Results to get the output.  
 
 # Report
-[Download the report (PDF)](https://github.com/jatishbhatia/Chatbot-Using-RASA-and-NLP/blob/main/Report/Report.pdf)
+[View Report (PDF)](https://github.com/jatishbhatia/Chatbot-Using-RASA-and-NLP/blob/main/Report/Report.pdf)
+The report has detailed explanation about the project.
