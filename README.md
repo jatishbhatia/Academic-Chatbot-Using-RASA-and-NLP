@@ -23,22 +23,32 @@
 
 # Steps to execute the code : 
 
-1. Install all the required libraries to run this project using the requirements.txt file. Switch directory to the location of this README file and run the below command. 
-pip install -r requirements.txt
+1. Install all the required libraries to run this project using the requirements.txt file. Switch directory to the location of this README file and run the below command.
 
-2. Switch your directory to "KB Construction" which contains the file main.py 
+   pip install -r requirements.txt
 
-3. Run the main file by using the below command. 
-python main.py
+3. Switch your directory to "KB Construction" which contains the file main.py 
 
-4. This will generate the knowledge base files located inside the Knowledge Base directory. The knowledge base will be created in two formats - N-Triples(Graph.nt) and Turtle(Graph.ttl)
+4. Run the main file by using the below command.
 
-5. Follow the steps to install the Apache Fuseki server as given in the report. 
+   python main.py
 
-6. Run the server and create a new dataset. Upload the generated knowledge base file "Graph.ttl"
+6. This will generate the knowledge base files located inside the Knowledge Base directory. The knowledge base will be created in two formats - N-Triples(Graph.nt) and Turtle(Graph.ttl)
 
-7. Go to the Queries tab and run the queries given in the directory - Queries and Results to get the output.  
+7. Follow the steps to install the Apache Fuseki server as given in the report. 
+
+8. Run the server and create a new dataset. Upload the generated knowledge base file "Graph.ttl"
+
+9. Go to the Queries tab and run the queries given in the directory - Queries and Results to get the output.  
 
 # Report
 [View Report (PDF)](https://github.com/jatishbhatia/Chatbot-Using-RASA-and-NLP/blob/main/Report/Report.pdf)
 The report has detailed explanation about the project.
+
+# Some example chatbot outputs
+
+![image](https://github.com/user-attachments/assets/0a95796d-a872-4bcb-99c9-8c07cc3f6894)
+![image](https://github.com/user-attachments/assets/0a5f2b2e-b3b8-44a7-9796-452298166d16)
+![image](https://github.com/user-attachments/assets/3ec43d6c-80c5-45b9-8801-1675e55e9f61)
+![image](https://github.com/user-attachments/assets/e6bc4eca-1dae-4dbf-9237-07ac3bc447ed)
+
